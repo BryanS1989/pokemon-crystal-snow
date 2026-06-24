@@ -42,6 +42,7 @@
   color: var(--text-primary);
   margin: 0;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .logoSub {
@@ -87,6 +88,30 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+@media (max-width: 540px) {
+  .headerInner {
+    padding: 0 16px;
+  }
+
+  .main {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .pageTitle {
+    font-size: 1.3rem;
+  }
+
+  .nav {
+    gap: 2px;
+  }
+
+  .navLink {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
 }
 
 .pageHeader {

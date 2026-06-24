@@ -1,16 +1,128 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Botón toggle filtros — solo visible en móvil */
+.filterToggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.filterBadge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 20px;
+}
+
+.filterArrow {
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Layout desktop: sidebar + main */
 .layout {
   display: grid;
   grid-template-columns: 260px 1fr;
   gap: 24px;
   align-items: start;
+  position: relative;
 }
 
+.filterPanel {
+  position: sticky;
+  top: 80px;
+}
+
+.filterPanelHeader {
+  display: none;
+}
+
+.overlay {
+  display: none;
+}
+
+/* ── Responsive ────────────────────────────── */
 @media (max-width: 860px) {
+  .filterToggle {
+    display: flex;
+  }
+
   .layout {
     grid-template-columns: 1fr;
   }
+
+  .filterPanel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(340px, 92vw);
+    height: 100dvh;
+    z-index: 200;
+    transform: translateX(-110%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    background: var(--card-bg);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .filterPanelOpen {
+    transform: translateX(0);
+  }
+
+  .filterPanelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .closeBtn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+  }
+
+  .closeBtn:hover {
+    color: var(--text-primary);
+    background: var(--stat-bg);
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
 }
 
+/* ── Main area ─────────────────────────────── */
 .main {
   display: flex;
   flex-direction: column;
@@ -83,6 +195,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 14px;
+}
+
+@media (max-width: 540px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .empty {

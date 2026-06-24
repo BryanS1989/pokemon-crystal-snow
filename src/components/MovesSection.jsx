@@ -18,6 +18,19 @@ const INITIAL_FILTERS = {
   includeNoEffect: true,
 }
 
+function countActiveFilters(filters) {
+  let count = 0
+  if (filters.search.trim()) count++
+  if (filters.selectedTypes.length > 0) count++
+  if (filters.powerRange[0] !== 0 || filters.powerRange[1] !== 250) count++
+  if (filters.accuracyRange[0] !== 40 || filters.accuracyRange[1] !== 100) count++
+  if (filters.ppRange[0] !== 1 || filters.ppRange[1] !== 40) count++
+  if (filters.effectRange[0] !== 10 || filters.effectRange[1] !== 100) count++
+  if (!filters.includePowerless) count++
+  if (!filters.includeNoEffect) count++
+  return count
+}
+
 function applyFilters(moves, filters) {
   const searchLower = filters.search.toLowerCase().trim()
 
@@ -60,8 +73,10 @@ export default function MovesSection() {
   const [filters, setFilters] = useState(INITIAL_FILTERS)
   const [sortBy, setSortBy] = useState('name')
   const [sortDir, setSortDir] = useState('asc')
+  const [filtersOpen, setFiltersOpen] = useState(false)
 
   const filtered = useMemo(() => applyFilters(movesData, filters), [filters])
+  const activeFilterCount = useMemo(() => countActiveFilters(filters), [filters])
 
   const sorted = useMemo(() => {
     const arr = [...filtered]
@@ -91,59 +106,88 @@ export default function MovesSection() {
   }
 
   return (
-    <div className={styles.layout}>
-      <MoveFilters
-        filters={filters}
-        onFiltersChange={setFilters}
-        types={typesData}
-        totalCount={movesData.length}
-        filteredCount={filtered.length}
-      />
+    <div className={styles.wrapper}>
+      {/* Botón toggle solo visible en móvil */}
+      <button
+        className={styles.filterToggle}
+        onClick={() => setFiltersOpen(v => !v)}
+      >
+        <span>⚙ Filtros</span>
+        {activeFilterCount > 0 && (
+          <span className={styles.filterBadge}>{activeFilterCount}</span>
+        )}
+        <span className={styles.filterArrow}>{filtersOpen ? '▲' : '▼'}</span>
+      </button>
 
-      <div className={styles.main}>
-        <div className={styles.toolbar}>
-          <p className={styles.resultCount}>
-            {sorted.length === 0
-              ? 'No se encontraron movimientos'
-              : `${sorted.length} movimiento${sorted.length !== 1 ? 's' : ''}`
-            }
-          </p>
-          <div className={styles.sortBtns}>
-            <span className={styles.sortLabel}>Ordenar:</span>
-            {[
-              { key: 'name',     label: 'Nombre' },
-              { key: 'power',    label: 'Power' },
-              { key: 'accuracy', label: 'Accuracy' },
-              { key: 'pp',       label: 'PP' },
-              { key: 'effect',   label: 'Effect' },
-            ].map(({ key, label }) => (
-              <button
-                key={key}
-                onClick={() => toggleSort(key)}
-                className={`${styles.sortBtn} ${sortBy === key ? styles.sortBtnActive : ''}`}
-              >
-                {label} {sortIcon(key)}
-              </button>
-            ))}
+      <div className={styles.layout}>
+        {/* Overlay en móvil cuando el panel está abierto */}
+        {filtersOpen && (
+          <div
+            className={styles.overlay}
+            onClick={() => setFiltersOpen(false)}
+          />
+        )}
+
+        <div className={`${styles.filterPanel} ${filtersOpen ? styles.filterPanelOpen : ''}`}>
+          <div className={styles.filterPanelHeader}>
+            <span>Filtros</span>
+            <button className={styles.closeBtn} onClick={() => setFiltersOpen(false)}>✕</button>
           </div>
+          <MoveFilters
+            filters={filters}
+            onFiltersChange={setFilters}
+            types={typesData}
+            totalCount={movesData.length}
+            filteredCount={filtered.length}
+            onClose={() => setFiltersOpen(false)}
+          />
         </div>
 
-        {sorted.length === 0 ? (
-          <div className={styles.empty}>
-            <span className={styles.emptyIcon}>❄️</span>
-            <p>Ningún movimiento coincide con los filtros aplicados.</p>
+        <div className={styles.main}>
+          <div className={styles.toolbar}>
+            <p className={styles.resultCount}>
+              {sorted.length === 0
+                ? 'No se encontraron movimientos'
+                : `${sorted.length} movimiento${sorted.length !== 1 ? 's' : ''}`
+              }
+            </p>
+            <div className={styles.sortBtns}>
+              <span className={styles.sortLabel}>Ordenar:</span>
+              {[
+                { key: 'name',     label: 'Nombre' },
+                { key: 'power',    label: 'Power' },
+                { key: 'accuracy', label: 'Accuracy' },
+                { key: 'pp',       label: 'PP' },
+                { key: 'effect',   label: 'Effect' },
+              ].map(({ key, label }) => (
+                <button
+                  key={key}
+                  onClick={() => toggleSort(key)}
+                  className={`${styles.sortBtn} ${sortBy === key ? styles.sortBtnActive : ''}`}
+                >
+                  {label} {sortIcon(key)}
+                </button>
+              ))}
+            </div>
           </div>
-        ) : (
-          <div className={styles.grid}>
-            {sorted.map(move => (
-              <MoveCard
-                key={move.id}
-                move={move}
-                type={typeMap[move.typeId]}
-              />
-            ))}
-          </div>
-        )}
+
+          {sorted.length === 0 ? (
+            <div className={styles.empty}>
+              <span className={styles.emptyIcon}>❄️</span>
+              <p>Ningún movimiento coincide con los filtros aplicados.</p>
+            </div>
+          ) : (
+            <div className={styles.grid}>
+              {sorted.map(move => (
+                <MoveCard
+                  key={move.id}
+                  move={move}
+                  type={typeMap[move.typeId]}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
