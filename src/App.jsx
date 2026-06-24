@@ -14,16 +14,16 @@ export default function App() {
             </div>
           </div>
           <nav className={styles.nav}>
-            <a className={`${styles.navLink} ${styles.navLinkActive}`}>Movimientos</a>
+            <a className={`${styles.navLink} ${styles.navLinkActive}`}>Moves</a>
           </nav>
         </div>
       </header>
 
       <main className={styles.main}>
         <div className={styles.pageHeader}>
-          <h2 className={styles.pageTitle}>Movimientos</h2>
+          <h2 className={styles.pageTitle}>Moves</h2>
           <p className={styles.pageDesc}>
-            Referencia completa de los <strong>242 movimientos</strong> del juego. Busca, filtra y ordena por tipo, poder, precisión y más.
+            Complete reference of all <strong>242 moves</strong> in the game. Search, filter and sort by type, power, accuracy and more.
           </p>
         </div>
         <MovesSection />

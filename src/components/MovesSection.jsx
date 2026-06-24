@@ -112,7 +112,6 @@ export default function MovesSection() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.layout}>
-        {/* Overlay en móvil cuando el panel está abierto */}
         {filtersOpen && (
           <div
             className={styles.overlay}
@@ -122,7 +121,7 @@ export default function MovesSection() {
 
         <div className={`${styles.filterPanel} ${filtersOpen ? styles.filterPanelOpen : ''}`}>
           <div className={styles.filterPanelHeader}>
-            <span>Filtros</span>
+            <span>Filters</span>
             <button className={styles.closeBtn} onClick={() => setFiltersOpen(false)}>✕</button>
           </div>
           <MoveFilters
@@ -136,13 +135,12 @@ export default function MovesSection() {
         </div>
 
         <div className={styles.main}>
-          {/* Controls: filter toggle (mobile) + toolbar — sticky en móvil */}
           <div className={styles.controls}>
             <button
               className={styles.filterToggle}
               onClick={() => setFiltersOpen(v => !v)}
             >
-              <span>⚙ Filtros</span>
+              <span>⚙ Filters</span>
               {activeFilterCount > 0 && (
                 <span className={styles.filterBadge}>{activeFilterCount}</span>
               )}
@@ -151,9 +149,9 @@ export default function MovesSection() {
 
             <div className={styles.toolbar}>
               <div className={styles.sortBtns}>
-                <span className={styles.sortLabel}>Ordenar:</span>
+                <span className={styles.sortLabel}>Sort by:</span>
                 {[
-                  { key: 'name',     label: 'Nombre' },
+                  { key: 'name',     label: 'Name' },
                   { key: 'power',    label: 'Power' },
                   { key: 'accuracy', label: 'Accuracy' },
                   { key: 'pp',       label: 'PP' },
@@ -171,8 +169,8 @@ export default function MovesSection() {
               <div className={styles.toolbarLeft}>
                 <p className={styles.resultCount}>
                   {sorted.length === 0
-                    ? 'No se encontraron movimientos'
-                    : `${sorted.length} movimiento${sorted.length !== 1 ? 's' : ''}`
+                    ? 'No moves found'
+                    : `${sorted.length} move${sorted.length !== 1 ? 's' : ''}`
                   }
                 </p>
                 {activeFilterCount > 0 && (
@@ -180,7 +178,7 @@ export default function MovesSection() {
                     className={styles.clearFiltersBtn}
                     onClick={() => setFilters(INITIAL_FILTERS)}
                   >
-                    Limpiar filtros
+                    Clear filters
                   </button>
                 )}
               </div>
@@ -190,7 +188,7 @@ export default function MovesSection() {
           {sorted.length === 0 ? (
             <div className={styles.empty}>
               <span className={styles.emptyIcon}>❄️</span>
-              <p>Ningún movimiento coincide con los filtros aplicados.</p>
+              <p>No moves match the applied filters.</p>
             </div>
           ) : (
             <div className={styles.grid}>

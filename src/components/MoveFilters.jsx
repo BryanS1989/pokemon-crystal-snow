@@ -48,33 +48,31 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
   return (
     <aside className={styles.sidebar}>
       <div className={styles.topRow}>
-        <h2 className={styles.title}>Filtros</h2>
+        <h2 className={styles.title}>Filters</h2>
         {hasActiveFilters && (
           <button className={styles.clearBtn} onClick={clearAll}>
-            Limpiar todo
+            Clear all
           </button>
         )}
       </div>
 
       <p className={styles.count}>
-        <strong>{filteredCount}</strong> / {totalCount} movimientos
+        <strong>{filteredCount}</strong> / {totalCount} moves
       </p>
 
-      {/* Búsqueda */}
       <section className={styles.section}>
-        <label className={styles.sectionLabel}>Buscar</label>
+        <label className={styles.sectionLabel}>Search</label>
         <input
           type="text"
-          placeholder="Nombre o descripción..."
+          placeholder="Name or description..."
           value={filters.search}
           onChange={e => set('search', e.target.value)}
           className={styles.searchInput}
         />
       </section>
 
-      {/* Tipos */}
       <section className={styles.section}>
-        <label className={styles.sectionLabel}>Tipo</label>
+        <label className={styles.sectionLabel}>Type</label>
         <div className={styles.typeGrid}>
           {types.map(type => (
             <button
@@ -93,7 +91,6 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
         </div>
       </section>
 
-      {/* Power */}
       <section className={styles.section}>
         <RangeSlider
           label="Power"
@@ -109,7 +106,7 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
             checked={filters.includePowerless}
             onChange={e => set('includePowerless', e.target.checked)}
           />
-          Incluir sin Power (—)
+          Include no Power (—)
         </label>
         <label className={styles.checkboxLabel}>
           <input
@@ -117,12 +114,11 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
             checked={filters.includeStarPower}
             onChange={e => set('includeStarPower', e.target.checked)}
           />
-          Incluir Power variable (★)
+          Include variable Power (★)
         </label>
         <p className={styles.starLegend}>★ = One-hit KO or damage based on level/HP</p>
       </section>
 
-      {/* Accuracy */}
       <section className={styles.section}>
         <RangeSlider
           label="Accuracy"
@@ -135,7 +131,6 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
         />
       </section>
 
-      {/* PP */}
       <section className={styles.section}>
         <RangeSlider
           label="PP"
@@ -146,7 +141,6 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
         />
       </section>
 
-      {/* Effect */}
       <section className={styles.section}>
         <RangeSlider
           label="Effect %"
@@ -163,7 +157,7 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
             checked={filters.includeNoEffect}
             onChange={e => set('includeNoEffect', e.target.checked)}
           />
-          Incluir movimientos sin Effect
+          Include no Effect (%)
         </label>
       </section>
     </aside>
