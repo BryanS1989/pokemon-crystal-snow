@@ -148,23 +148,25 @@ export default function MovesSection() {
             </button>
 
             <div className={styles.toolbar}>
-              <div className={styles.sortBtns}>
-                <span className={styles.sortLabel}>Sort by:</span>
-                {[
-                  { key: 'name',     label: 'Name' },
-                  { key: 'power',    label: 'Power' },
-                  { key: 'accuracy', label: 'Accuracy' },
-                  { key: 'pp',       label: 'PP' },
-                  { key: 'effect',   label: 'Effect' },
-                ].map(({ key, label }) => (
-                  <button
-                    key={key}
-                    onClick={() => toggleSort(key)}
-                    className={`${styles.sortBtn} ${sortBy === key ? styles.sortBtnActive : ''}`}
-                  >
-                    {label} {sortIcon(key)}
-                  </button>
-                ))}
+              <div className={styles.sort}>
+                <p className={styles.sortLabel}>Sort by:</p>
+                <div className={styles.sortBtns}>
+                  {[
+                    { key: 'name',     label: 'Name' },
+                    { key: 'power',    label: 'Power' },
+                    { key: 'accuracy', label: 'Accuracy' },
+                    { key: 'pp',       label: 'PP' },
+                    { key: 'effect',   label: 'Effect' },
+                  ].map(({ key, label }) => (
+                    <button
+                      key={key}
+                      onClick={() => toggleSort(key)}
+                      className={`${styles.sortBtn} ${sortBy === key ? styles.sortBtnActive : ''}`}
+                    >
+                      {label} {sortIcon(key)}
+                    </button>
+                  ))}
+                </div>
               </div>
               <div className={styles.toolbarLeft}>
                 <p className={styles.resultCount}>

@@ -110,8 +110,15 @@
   color: #fff;
 }
 
+.sort {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .sortBtns {
   display: flex;
+  justify-content: left;
   align-items: center;
   gap: 6px;
   flex-wrap: wrap;
@@ -121,6 +128,7 @@
   font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 600;
+  margin: 0;
 }
 
 .sortBtn {
@@ -262,8 +270,15 @@
     gap: 6px;
   }
 
+  .sort {
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+  }
+
   .sortBtns {
-    order: -1;
+    justify-content: space-around;
+    width: 100%;
   }
 }
 
