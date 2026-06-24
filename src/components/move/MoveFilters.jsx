@@ -1,4 +1,4 @@
-import RangeSlider from './RangeSlider'
+import RangeSlider from '../shared/RangeSlider'
 import styles from './MoveFilters.module.css'
 
 const POWER_RANGE   = [0, 250]

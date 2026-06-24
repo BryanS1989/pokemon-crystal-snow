@@ -1,4 +1,4 @@
-import MovesSection from './components/MovesSection'
+import MovesSection from './components/move/MovesSection'
 import styles from './App.module.css'
 
 export default function App() {

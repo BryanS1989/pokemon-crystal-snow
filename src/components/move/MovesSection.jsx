@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
-import movesData from '../data/moves.json'
-import typesData from '../data/move-types.json'
+import movesData from '../../data/moves.json'
+import typesData from '../../data/move-types.json'
 import MoveCard from './MoveCard'
 import MoveFilters from './MoveFilters'
 import styles from './MovesSection.module.css'
