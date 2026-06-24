@@ -15,8 +15,6 @@ export default function App() {
           </div>
           <nav className={styles.nav}>
             <a className={`${styles.navLink} ${styles.navLinkActive}`}>Movimientos</a>
-            <a className={styles.navLink} title="Próximamente">Pokémon</a>
-            <a className={styles.navLink} title="Próximamente">Items</a>
           </nav>
         </div>
       </header>
