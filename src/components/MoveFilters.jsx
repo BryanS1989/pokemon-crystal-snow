@@ -25,6 +25,7 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
       ppRange: PP_RANGE,
       effectRange: EFFECT_RANGE,
       includePowerless: true,
+      includeStarPower: true,
       includeNoEffect: true,
     })
   }
@@ -41,6 +42,7 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
     filters.effectRange[0] !== EFFECT_RANGE[0] ||
     filters.effectRange[1] !== EFFECT_RANGE[1] ||
     !filters.includePowerless ||
+    !filters.includeStarPower ||
     !filters.includeNoEffect
 
   return (
@@ -107,8 +109,17 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
             checked={filters.includePowerless}
             onChange={e => set('includePowerless', e.target.checked)}
           />
-          Incluir movimientos sin Power
+          Incluir sin Power (—)
         </label>
+        <label className={styles.checkboxLabel}>
+          <input
+            type="checkbox"
+            checked={filters.includeStarPower}
+            onChange={e => set('includeStarPower', e.target.checked)}
+          />
+          Incluir Power variable (★)
+        </label>
+        <p className={styles.starLegend}>★ = One-hit KO or damage based on level/HP</p>
       </section>
 
       {/* Accuracy */}

@@ -139,3 +139,11 @@
   cursor: pointer;
   flex-shrink: 0;
 }
+
+.starLegend {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+  font-style: italic;
+  line-height: 1.4;
+}

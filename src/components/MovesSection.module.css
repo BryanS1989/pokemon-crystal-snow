@@ -138,10 +138,34 @@
   gap: 10px;
 }
 
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .resultCount {
   font-size: 0.85rem;
   color: var(--text-muted);
   margin: 0;
+}
+
+.clearFiltersBtn {
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.clearFiltersBtn:hover {
+  background: var(--accent);
+  color: #fff;
 }
 
 .sortBtns {

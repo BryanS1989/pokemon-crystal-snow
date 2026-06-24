@@ -17,7 +17,10 @@ export default function MoveCard({ move, type }) {
         <div className={styles.stat}>
           <span className={styles.statLabel}>Power</span>
           <span className={styles.statValue}>
-            {move.power !== null ? move.power : '—'}
+            {move.power === '★'
+            ? <span title="One-hit KO or damage based on level/HP" style={{ cursor: 'help' }}>★</span>
+            : move.power !== null ? move.power : '—'
+          }
           </span>
         </div>
         <div className={styles.stat}>

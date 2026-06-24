@@ -15,6 +15,7 @@ const INITIAL_FILTERS = {
   ppRange: [1, 40],
   effectRange: [10, 100],
   includePowerless: true,
+  includeStarPower: true,
   includeNoEffect: true,
 }
 
@@ -27,6 +28,7 @@ function countActiveFilters(filters) {
   if (filters.ppRange[0] !== 1 || filters.ppRange[1] !== 40) count++
   if (filters.effectRange[0] !== 10 || filters.effectRange[1] !== 100) count++
   if (!filters.includePowerless) count++
+  if (!filters.includeStarPower) count++
   if (!filters.includeNoEffect) count++
   return count
 }
@@ -47,6 +49,8 @@ function applyFilters(moves, filters) {
 
     if (move.power === null) {
       if (!filters.includePowerless) return false
+    } else if (move.power === '★') {
+      if (!filters.includeStarPower) return false
     } else {
       if (move.power < filters.powerRange[0] || move.power > filters.powerRange[1]) return false
     }
@@ -83,8 +87,8 @@ export default function MovesSection() {
     arr.sort((a, b) => {
       let va = a[sortBy]
       let vb = b[sortBy]
-      if (va === null) va = sortDir === 'asc' ? Infinity : -Infinity
-      if (vb === null) vb = sortDir === 'asc' ? Infinity : -Infinity
+      if (va === null || va === '★') va = sortDir === 'asc' ? Infinity : -Infinity
+      if (vb === null || vb === '★') vb = sortDir === 'asc' ? Infinity : -Infinity
       if (typeof va === 'string') return sortDir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va)
       return sortDir === 'asc' ? va - vb : vb - va
     })
@@ -145,12 +149,22 @@ export default function MovesSection() {
 
         <div className={styles.main}>
           <div className={styles.toolbar}>
-            <p className={styles.resultCount}>
-              {sorted.length === 0
-                ? 'No se encontraron movimientos'
-                : `${sorted.length} movimiento${sorted.length !== 1 ? 's' : ''}`
-              }
-            </p>
+            <div className={styles.toolbarLeft}>
+              <p className={styles.resultCount}>
+                {sorted.length === 0
+                  ? 'No se encontraron movimientos'
+                  : `${sorted.length} movimiento${sorted.length !== 1 ? 's' : ''}`
+                }
+              </p>
+              {activeFilterCount > 0 && (
+                <button
+                  className={styles.clearFiltersBtn}
+                  onClick={() => setFilters(INITIAL_FILTERS)}
+                >
+                  Limpiar filtros
+                </button>
+              )}
+            </div>
             <div className={styles.sortBtns}>
               <span className={styles.sortLabel}>Ordenar:</span>
               {[
