@@ -20,12 +20,6 @@ export default function App() {
       </header>
 
       <main className={styles.main}>
-        <div className={styles.pageHeader}>
-          <h2 className={styles.pageTitle}>Moves</h2>
-          <p className={styles.pageDesc}>
-            Complete reference of all <strong>242 moves</strong> in the game. Search, filter and sort by type, power, accuracy and more.
-          </p>
-        </div>
         <MovesSection />
       </main>
 

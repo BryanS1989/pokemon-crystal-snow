@@ -110,101 +110,109 @@ export default function MovesSection() {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.layout}>
-        {filtersOpen && (
-          <div
-            className={styles.overlay}
-            onClick={() => setFiltersOpen(false)}
-          />
-        )}
+    <section>
+      <div className={styles.pageHeader}>
+        <h2 className={styles.pageTitle}>Moves</h2>
+        <p className={styles.pageDesc}>
+          Complete reference of all <strong>242 moves</strong> in the game. Search, filter and sort by type, power, accuracy and more.
+        </p>
+      </div>
+      <div className={styles.wrapper}>
+        <div className={styles.layout}>
+          {filtersOpen && (
+            <div
+              className={styles.overlay}
+              onClick={() => setFiltersOpen(false)}
+            />
+          )}
 
-        <div className={`${styles.filterPanel} ${filtersOpen ? styles.filterPanelOpen : ''}`}>
-          <div className={styles.filterPanelHeader}>
-            <span>Filters</span>
-            <button className={styles.closeBtn} onClick={() => setFiltersOpen(false)}>✕</button>
+          <div className={`${styles.filterPanel} ${filtersOpen ? styles.filterPanelOpen : ''}`}>
+            <div className={styles.filterPanelHeader}>
+              <span>Filters</span>
+              <button className={styles.closeBtn} onClick={() => setFiltersOpen(false)}>✕</button>
+            </div>
+            <MoveFilters
+              filters={filters}
+              onFiltersChange={setFilters}
+              types={typesData}
+              totalCount={movesData.length}
+              filteredCount={filtered.length}
+              onClose={() => setFiltersOpen(false)}
+            />
           </div>
-          <MoveFilters
-            filters={filters}
-            onFiltersChange={setFilters}
-            types={typesData}
-            totalCount={movesData.length}
-            filteredCount={filtered.length}
-            onClose={() => setFiltersOpen(false)}
-          />
-        </div>
 
-        <div className={styles.main}>
-          <div className={styles.controls}>
-            <button
-              className={styles.filterToggle}
-              onClick={() => setFiltersOpen(v => !v)}
-            >
-              <span>⚙ Filters</span>
-              {activeFilterCount > 0 && (
-                <span className={styles.filterBadge}>{activeFilterCount}</span>
-              )}
-              <span className={styles.filterArrow}>{filtersOpen ? '▲' : '▼'}</span>
-            </button>
+          <div className={styles.main}>
+            <div className={styles.controls}>
+              <button
+                className={styles.filterToggle}
+                onClick={() => setFiltersOpen(v => !v)}
+              >
+                <span>⚙ Filters</span>
+                {activeFilterCount > 0 && (
+                  <span className={styles.filterBadge}>{activeFilterCount}</span>
+                )}
+                <span className={styles.filterArrow}>{filtersOpen ? '▲' : '▼'}</span>
+              </button>
 
-            <div className={styles.toolbar}>
-              <div className={styles.sort}>
-                <p className={styles.sortLabel}>Sort by:</p>
-                <div className={styles.sortBtns}>
-                  {[
-                    { key: 'name',     label: 'Name' },
-                    { key: 'power',    label: 'Power' },
-                    { key: 'accuracy', label: 'Accuracy' },
-                    { key: 'pp',       label: 'PP' },
-                    { key: 'effect',   label: 'Effect' },
-                  ].map(({ key, label }) => (
+              <div className={styles.toolbar}>
+                <div className={styles.sort}>
+                  <p className={styles.sortLabel}>Sort by:</p>
+                  <div className={styles.sortBtns}>
+                    {[
+                      { key: 'name',     label: 'Name' },
+                      { key: 'power',    label: 'Power' },
+                      { key: 'accuracy', label: 'Accuracy' },
+                      { key: 'pp',       label: 'PP' },
+                      { key: 'effect',   label: 'Effect' },
+                    ].map(({ key, label }) => (
+                      <button
+                        key={key}
+                        onClick={() => toggleSort(key)}
+                        className={`${styles.sortBtn} ${sortBy === key ? styles.sortBtnActive : ''}`}
+                      >
+                        {label} {sortIcon(key)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className={styles.toolbarLeft}>
+                  <p className={styles.resultCount}>
+                    {sorted.length === 0
+                      ? 'No moves found'
+                      : `${sorted.length} move${sorted.length !== 1 ? 's' : ''}`
+                    }
+                  </p>
+                  {activeFilterCount > 0 && (
                     <button
-                      key={key}
-                      onClick={() => toggleSort(key)}
-                      className={`${styles.sortBtn} ${sortBy === key ? styles.sortBtnActive : ''}`}
+                      className={styles.clearFiltersBtn}
+                      onClick={() => setFilters(INITIAL_FILTERS)}
                     >
-                      {label} {sortIcon(key)}
+                      Clear filters
                     </button>
-                  ))}
+                  )}
                 </div>
               </div>
-              <div className={styles.toolbarLeft}>
-                <p className={styles.resultCount}>
-                  {sorted.length === 0
-                    ? 'No moves found'
-                    : `${sorted.length} move${sorted.length !== 1 ? 's' : ''}`
-                  }
-                </p>
-                {activeFilterCount > 0 && (
-                  <button
-                    className={styles.clearFiltersBtn}
-                    onClick={() => setFilters(INITIAL_FILTERS)}
-                  >
-                    Clear filters
-                  </button>
-                )}
-              </div>
             </div>
-          </div>
 
-          {sorted.length === 0 ? (
-            <div className={styles.empty}>
-              <span className={styles.emptyIcon}>❄️</span>
-              <p>No moves match the applied filters.</p>
-            </div>
-          ) : (
-            <div className={styles.grid}>
-              {sorted.map(move => (
-                <MoveCard
-                  key={move.id}
-                  move={move}
-                  type={typeMap[move.typeId]}
-                />
-              ))}
-            </div>
-          )}
+            {sorted.length === 0 ? (
+              <div className={styles.empty}>
+                <span className={styles.emptyIcon}>❄️</span>
+                <p>No moves match the applied filters.</p>
+              </div>
+            ) : (
+              <div className={styles.grid}>
+                {sorted.map(move => (
+                  <MoveCard
+                    key={move.id}
+                    move={move}
+                    type={typeMap[move.typeId]}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
