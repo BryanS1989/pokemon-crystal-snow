@@ -1,0 +1,20 @@
+[
+  { "id": 1,  "name": "Bug",      "color": "#A8B820", "textColor": "#ffffff" },
+  { "id": 2,  "name": "Dark",     "color": "#705848", "textColor": "#ffffff" },
+  { "id": 3,  "name": "Dragon",   "color": "#7038F8", "textColor": "#ffffff" },
+  { "id": 4,  "name": "Electric", "color": "#F8D030", "textColor": "#333333" },
+  { "id": 5,  "name": "Fairy",    "color": "#EE99AC", "textColor": "#333333" },
+  { "id": 6,  "name": "Fighting", "color": "#C03028", "textColor": "#ffffff" },
+  { "id": 7,  "name": "Fire",     "color": "#F08030", "textColor": "#ffffff" },
+  { "id": 8,  "name": "Flying",   "color": "#A890F0", "textColor": "#ffffff" },
+  { "id": 9,  "name": "Ghost",    "color": "#705898", "textColor": "#ffffff" },
+  { "id": 10, "name": "Grass",    "color": "#78C850", "textColor": "#ffffff" },
+  { "id": 11, "name": "Ground",   "color": "#E0C068", "textColor": "#333333" },
+  { "id": 12, "name": "Ice",      "color": "#98D8D8", "textColor": "#333333" },
+  { "id": 13, "name": "Normal",   "color": "#A8A878", "textColor": "#ffffff" },
+  { "id": 14, "name": "Poison",   "color": "#A040A0", "textColor": "#ffffff" },
+  { "id": 15, "name": "Psychic",  "color": "#F85888", "textColor": "#ffffff" },
+  { "id": 16, "name": "Rock",     "color": "#B8A038", "textColor": "#ffffff" },
+  { "id": 17, "name": "Steel",    "color": "#B8B8D0", "textColor": "#333333" },
+  { "id": 18, "name": "Water",    "color": "#6890F0", "textColor": "#ffffff" }
+]
