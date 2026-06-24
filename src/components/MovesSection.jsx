@@ -111,18 +111,6 @@ export default function MovesSection() {
 
   return (
     <div className={styles.wrapper}>
-      {/* Botón toggle solo visible en móvil */}
-      <button
-        className={styles.filterToggle}
-        onClick={() => setFiltersOpen(v => !v)}
-      >
-        <span>⚙ Filtros</span>
-        {activeFilterCount > 0 && (
-          <span className={styles.filterBadge}>{activeFilterCount}</span>
-        )}
-        <span className={styles.filterArrow}>{filtersOpen ? '▲' : '▼'}</span>
-      </button>
-
       <div className={styles.layout}>
         {/* Overlay en móvil cuando el panel está abierto */}
         {filtersOpen && (
@@ -148,40 +136,54 @@ export default function MovesSection() {
         </div>
 
         <div className={styles.main}>
-          <div className={styles.toolbar}>
-            <div className={styles.toolbarLeft}>
-              <p className={styles.resultCount}>
-                {sorted.length === 0
-                  ? 'No se encontraron movimientos'
-                  : `${sorted.length} movimiento${sorted.length !== 1 ? 's' : ''}`
-                }
-              </p>
+          {/* Controls: filter toggle (mobile) + toolbar — sticky en móvil */}
+          <div className={styles.controls}>
+            <button
+              className={styles.filterToggle}
+              onClick={() => setFiltersOpen(v => !v)}
+            >
+              <span>⚙ Filtros</span>
               {activeFilterCount > 0 && (
-                <button
-                  className={styles.clearFiltersBtn}
-                  onClick={() => setFilters(INITIAL_FILTERS)}
-                >
-                  Limpiar filtros
-                </button>
+                <span className={styles.filterBadge}>{activeFilterCount}</span>
               )}
-            </div>
-            <div className={styles.sortBtns}>
-              <span className={styles.sortLabel}>Ordenar:</span>
-              {[
-                { key: 'name',     label: 'Nombre' },
-                { key: 'power',    label: 'Power' },
-                { key: 'accuracy', label: 'Accuracy' },
-                { key: 'pp',       label: 'PP' },
-                { key: 'effect',   label: 'Effect' },
-              ].map(({ key, label }) => (
-                <button
-                  key={key}
-                  onClick={() => toggleSort(key)}
-                  className={`${styles.sortBtn} ${sortBy === key ? styles.sortBtnActive : ''}`}
-                >
-                  {label} {sortIcon(key)}
-                </button>
-              ))}
+              <span className={styles.filterArrow}>{filtersOpen ? '▲' : '▼'}</span>
+            </button>
+
+            <div className={styles.toolbar}>
+              <div className={styles.sortBtns}>
+                <span className={styles.sortLabel}>Ordenar:</span>
+                {[
+                  { key: 'name',     label: 'Nombre' },
+                  { key: 'power',    label: 'Power' },
+                  { key: 'accuracy', label: 'Accuracy' },
+                  { key: 'pp',       label: 'PP' },
+                  { key: 'effect',   label: 'Effect' },
+                ].map(({ key, label }) => (
+                  <button
+                    key={key}
+                    onClick={() => toggleSort(key)}
+                    className={`${styles.sortBtn} ${sortBy === key ? styles.sortBtnActive : ''}`}
+                  >
+                    {label} {sortIcon(key)}
+                  </button>
+                ))}
+              </div>
+              <div className={styles.toolbarLeft}>
+                <p className={styles.resultCount}>
+                  {sorted.length === 0
+                    ? 'No se encontraron movimientos'
+                    : `${sorted.length} movimiento${sorted.length !== 1 ? 's' : ''}`
+                  }
+                </p>
+                {activeFilterCount > 0 && (
+                  <button
+                    className={styles.clearFiltersBtn}
+                    onClick={() => setFilters(INITIAL_FILTERS)}
+                  >
+                    Limpiar filtros
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 
