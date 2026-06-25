@@ -13,31 +13,48 @@ const pokemonByName = Object.fromEntries(pokemonData.map(p => [p.name, p]))
 const moveByName = Object.fromEntries(movesData.map(m => [m.name, m]))
 const eggMovesBySpecies = Object.fromEntries(eggMovesData.map(e => [e.species, e.moves]))
 
+const STAT_CONDITION_LABEL = {
+  ATK_GT_DEF: 'ATK > DEF',
+  ATK_LT_DEF: 'ATK < DEF',
+  ATK_EQ_DEF: 'ATK = DEF',
+}
+
+function getTrigger(evolution) {
+  switch (evolution.type) {
+    case 'LEVEL': return `Lv. ${evolution.level}`
+    case 'ITEM':  return evolution.item.replace(/_/g, ' ')
+    case 'HAPPINESS': return 'Happiness'
+    case 'STAT': {
+      const cond = STAT_CONDITION_LABEL[evolution.condition] || evolution.condition
+      return `Lv. ${evolution.level} (${cond})`
+    }
+    default: return evolution.type
+  }
+}
+
 function EvolutionInfo({ evolution }) {
   if (!evolution) {
     return <p className={styles.noEvolution}>Does not evolve</p>
   }
 
-  const trigger =
-    evolution.type === 'LEVEL'
-      ? `Lv. ${evolution.level}`
-      : evolution.item.replace(/_/g, ' ')
-
-  const target = pokemonByName[evolution.into]
+  const trigger = getTrigger(evolution)
+  const target = evolution.into ? pokemonByName[evolution.into] : null
   const paddedId = target ? String(target.id).padStart(3, '0') : null
 
   const cardContent = (
     <>
-      <img
-        src={`${SPRITE_BASE}/${target?.id}.png`}
-        alt={evolution.into}
-        width={72}
-        height={72}
-        className={styles.evolutionSprite}
-      />
+      {target && (
+        <img
+          src={`${SPRITE_BASE}/${target.id}.png`}
+          alt={evolution.into}
+          width={72}
+          height={72}
+          className={styles.evolutionSprite}
+        />
+      )}
       <div className={styles.evolutionCardInfo}>
         {paddedId && <span className={styles.evolutionCardId}>#{paddedId}</span>}
-        <span className={styles.evolutionCardName}>{evolution.into}</span>
+        {evolution.into && <span className={styles.evolutionCardName}>{evolution.into}</span>}
         <span className={styles.evolutionTrigger}>{trigger}</span>
       </div>
     </>
