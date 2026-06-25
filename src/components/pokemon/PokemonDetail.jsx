@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import pokemonData from '../../data/pokemon.json'
+
+const SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
 import movesData from '../../data/moves.json'
 import moveTypes from '../../data/move-types.json'
 import eggMovesData from '../../data/egg-moves.json'
@@ -18,20 +20,32 @@ function EvolutionInfo({ evolution }) {
 
   const trigger =
     evolution.type === 'LEVEL'
-      ? `Level ${evolution.level}`
+      ? `Lv. ${evolution.level}`
       : evolution.item.replace(/_/g, ' ')
 
   const target = pokemonByName[evolution.into]
+  const paddedId = target ? String(target.id).padStart(3, '0') : null
 
-  return (
-    <div className={styles.evolutionRow}>
-      {target
-        ? <Link to={`/pokemon/${target.id}`} className={styles.evolutionInto}>{evolution.into}</Link>
-        : <span className={styles.evolutionInto}>{evolution.into}</span>
-      }
-      <span className={styles.evolutionTrigger}>{trigger}</span>
-    </div>
+  const cardContent = (
+    <>
+      <img
+        src={`${SPRITE_BASE}/${target?.id}.png`}
+        alt={evolution.into}
+        width={72}
+        height={72}
+        className={styles.evolutionSprite}
+      />
+      <div className={styles.evolutionCardInfo}>
+        {paddedId && <span className={styles.evolutionCardId}>#{paddedId}</span>}
+        <span className={styles.evolutionCardName}>{evolution.into}</span>
+        <span className={styles.evolutionTrigger}>{trigger}</span>
+      </div>
+    </>
   )
+
+  return target
+    ? <Link to={`/pokemon/${target.id}`} className={styles.evolutionCard}>{cardContent}</Link>
+    : <div className={styles.evolutionCard}>{cardContent}</div>
 }
 
 export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack }) {
