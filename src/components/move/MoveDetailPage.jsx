@@ -2,9 +2,11 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import movesData from '../../data/moves.json'
 import typesData from '../../data/move-types.json'
 import pokemonData from '../../data/pokemon.json'
+import eggMovesData from '../../data/egg-moves.json'
 import styles from './MoveDetailPage.module.css'
 
 const typeMap = Object.fromEntries(typesData.map(t => [t.id, t]))
+const pokemonByName = Object.fromEntries(pokemonData.map(p => [p.name, p]))
 
 const SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
 
@@ -15,6 +17,13 @@ function buildLearners(moveName) {
     if (entry) learners.push({ pokemon, level: entry.level })
   }
   return learners
+}
+
+function buildEggLearners(moveName) {
+  return eggMovesData
+    .filter(entry => entry.moves.includes(moveName))
+    .map(entry => pokemonByName[entry.species])
+    .filter(Boolean)
 }
 
 export default function MoveDetailPage() {
@@ -28,6 +37,7 @@ export default function MoveDetailPage() {
 
   const type = typeMap[move.typeId]
   const learners = buildLearners(move.name)
+  const eggLearners = buildEggLearners(move.name)
 
   return (
     <div className={styles.wrapper}>
@@ -35,82 +45,121 @@ export default function MoveDetailPage() {
         ← Back
       </button>
 
-      {/* Move info */}
-      <div className={styles.moveCard}>
-        <div className={styles.moveHeader}>
-          <h2 className={styles.moveName}>{move.name}</h2>
-          <span
-            className={styles.typeBadge}
-            style={{ backgroundColor: type.color, color: type.textColor }}
-          >
-            {type.name}
-          </span>
-        </div>
-
-        <div className={styles.stats}>
-          <div className={styles.stat}>
-            <span className={styles.statLabel}>Power</span>
-            <span className={styles.statValue}>
-              {move.power === '★'
-                ? <span title="One-hit KO or damage based on level/HP" style={{ cursor: 'help' }}>★</span>
-                : move.power !== null ? move.power : '—'
-              }
-            </span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statLabel}>Accuracy</span>
-            <span className={styles.statValue}>{move.accuracy}%</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statLabel}>PP</span>
-            <span className={styles.statValue}>{move.pp}</span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statLabel}>Effect%</span>
-            <span className={styles.statValue}>
-              {move.effect !== null ? `${move.effect}%` : '—'}
-            </span>
-          </div>
-        </div>
-
-        <p className={styles.description}>{move.description}</p>
-      </div>
-
-      {/* Learners */}
-      <section className={styles.learnersSection}>
-        <div className={styles.learnersHeader}>
-          <h3 className={styles.learnersTitle}>Pokémon that learn this move</h3>
-          <span className={styles.learnersCount}>{learners.length}</span>
-        </div>
-
-        {learners.length === 0 ? (
-          <p className={styles.noLearners}>No Pokémon in the Pokédex learn this move.</p>
-        ) : (
-          <div className={styles.learnersGrid}>
-            {learners.map(({ pokemon, level }) => (
-              <Link
-                key={pokemon.id}
-                to={`/pokemon/${pokemon.id}`}
-                className={styles.learnerRow}
+      <div className={styles.columns}>
+        {/* Left: move info card */}
+        <div className={styles.leftCol}>
+          <div className={styles.moveCard}>
+            <div className={styles.moveHeader}>
+              <h2 className={styles.moveName}>{move.name}</h2>
+              <span
+                className={styles.typeBadge}
+                style={{ backgroundColor: type.color, color: type.textColor }}
               >
-                <span className={styles.learnerId}>
-                  #{String(pokemon.id).padStart(3, '0')}
+                {type.name}
+              </span>
+            </div>
+
+            <div className={styles.stats}>
+              <div className={styles.stat}>
+                <span className={styles.statLabel}>Power</span>
+                <span className={styles.statValue}>
+                  {move.power === '★'
+                    ? <span title="One-hit KO or damage based on level/HP" style={{ cursor: 'help' }}>★</span>
+                    : move.power !== null ? move.power : '—'
+                  }
                 </span>
-                <img
-                  src={`${SPRITE_BASE}/${pokemon.id}.png`}
-                  alt={pokemon.name}
-                  width={48}
-                  height={48}
-                  className={styles.learnerSprite}
-                  loading="lazy"
-                />
-                <span className={styles.learnerName}>{pokemon.name}</span>
-                <span className={styles.learnerLevel}>Lv. {level}</span>
-              </Link>
-            ))}
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statLabel}>Accuracy</span>
+                <span className={styles.statValue}>{move.accuracy}%</span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statLabel}>PP</span>
+                <span className={styles.statValue}>{move.pp}</span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statLabel}>Effect%</span>
+                <span className={styles.statValue}>
+                  {move.effect !== null ? `${move.effect}%` : '—'}
+                </span>
+              </div>
+            </div>
+
+            <p className={styles.description}>{move.description}</p>
           </div>
-        )}
-      </section>
+        </div>
+
+        {/* Right: learners */}
+        <div className={styles.rightCol}>
+          <section className={styles.learnersSection}>
+            <div className={styles.learnersHeader}>
+              <h3 className={styles.learnersTitle}>Pokémon that learn this move</h3>
+              <span className={styles.learnersCount}>{learners.length}</span>
+            </div>
+
+            {learners.length === 0 ? (
+              <p className={styles.noLearners}>No Pokémon in the Pokédex learn this move.</p>
+            ) : (
+              <div className={styles.learnersGrid}>
+                {learners.map(({ pokemon, level }) => (
+                  <Link
+                    key={pokemon.id}
+                    to={`/pokemon/${pokemon.id}`}
+                    className={styles.learnerRow}
+                  >
+                    <span className={styles.learnerId}>
+                      #{String(pokemon.id).padStart(3, '0')}
+                    </span>
+                    <img
+                      src={`${SPRITE_BASE}/${pokemon.id}.png`}
+                      alt={pokemon.name}
+                      width={48}
+                      height={48}
+                      className={styles.learnerSprite}
+                      loading="lazy"
+                    />
+                    <span className={styles.learnerName}>{pokemon.name}</span>
+                    <span className={styles.learnerLevel}>Lv. {level}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </section>
+
+          {eggLearners.length > 0 && (
+            <section className={styles.learnersSection}>
+              <div className={styles.learnersHeader}>
+                <h3 className={styles.learnersTitle}>Egg move</h3>
+                <span className={styles.learnersCount}>{eggLearners.length}</span>
+              </div>
+
+              <div className={styles.learnersGrid}>
+                {eggLearners.map(pokemon => (
+                  <Link
+                    key={pokemon.id}
+                    to={`/pokemon/${pokemon.id}`}
+                    className={styles.learnerRow}
+                  >
+                    <span className={styles.learnerId}>
+                      #{String(pokemon.id).padStart(3, '0')}
+                    </span>
+                    <img
+                      src={`${SPRITE_BASE}/${pokemon.id}.png`}
+                      alt={pokemon.name}
+                      width={48}
+                      height={48}
+                      className={styles.learnerSprite}
+                      loading="lazy"
+                    />
+                    <span className={styles.learnerName}>{pokemon.name}</span>
+                    <span className={styles.learnerEgg}>Egg</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
     </div>
   )
 }

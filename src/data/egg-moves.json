@@ -1,0 +1,1179 @@
+[
+  {
+    "species": "Bulbasaur",
+    "moves": [
+      "Light Screen",
+      "Skull Bash",
+      "Safeguard",
+      "Petal Dance",
+      "Earth Power"
+    ]
+  },
+  {
+    "species": "Charmander",
+    "moves": [
+      "Belly Drum",
+      "Ancient Power",
+      "Bite",
+      "Dragon Rush",
+      "Metal Claw"
+    ]
+  },
+  {
+    "species": "Squirtle",
+    "moves": [
+      "Aqua Jet",
+      "Mirror Coat",
+      "Haze",
+      "Mist",
+      "Confusion"
+    ]
+  },
+  {
+    "species": "Pidgey",
+    "moves": [
+      "Aerial Ace",
+      "Feint Attack",
+      "Foresight",
+      "Take Down",
+      "Brave Bird"
+    ]
+  },
+  {
+    "species": "Rattata",
+    "moves": [
+      "Screech",
+      "Counter",
+      "Reversal",
+      "Fury Swipes"
+    ]
+  },
+  {
+    "species": "Spearow",
+    "moves": [
+      "Whirlwind",
+      "Quick Attack",
+      "Tri Attack"
+    ]
+  },
+  {
+    "species": "Ekans",
+    "moves": [
+      "Pursuit",
+      "Scary Face",
+      "Beat Up",
+      "Dragon Rush",
+      "Disable",
+      "Spite"
+    ]
+  },
+  {
+    "species": "Sandshrew",
+    "moves": [
+      "Flail",
+      "Safeguard",
+      "Counter"
+    ]
+  },
+  {
+    "species": "Nidoran♀",
+    "moves": [
+      "Supersonic",
+      "Disable",
+      "Take Down",
+      "Focus Energy",
+      "Counter",
+      "Beat Up"
+    ]
+  },
+  {
+    "species": "Nidoran♂",
+    "moves": [
+      "Supersonic",
+      "Disable",
+      "Take Down",
+      "Confusion",
+      "Amnesia",
+      "Counter",
+      "Beat Up"
+    ]
+  },
+  {
+    "species": "Vulpix",
+    "moves": [
+      "Roar",
+      "Hypnosis",
+      "Flail",
+      "Spite",
+      "Flame Wheel",
+      "Nightmare"
+    ]
+  },
+  {
+    "species": "Zubat",
+    "moves": [
+      "Quick Attack",
+      "Pursuit",
+      "Feint Attack",
+      "Gust",
+      "Whirlwind",
+      "Hypnosis",
+      "Mega Drain",
+      "Brave Bird"
+    ]
+  },
+  {
+    "species": "Oddish",
+    "moves": [
+      "Swords Dance",
+      "Razor Leaf",
+      "Flail",
+      "Synthesis",
+      "Leech Seed",
+      "Sweet Kiss",
+      "Charm"
+    ]
+  },
+  {
+    "species": "Paras",
+    "moves": [
+      "Counter",
+      "Psybeam",
+      "Pursuit",
+      "Leech Seed",
+      "Agility",
+      "Metal Claw"
+    ]
+  },
+  {
+    "species": "Venonat",
+    "moves": [
+      "Baton Pass",
+      "Psywave",
+      "Psychic",
+      "Screech",
+      "Agility",
+      "Venoshock"
+    ]
+  },
+  {
+    "species": "Diglett",
+    "moves": [
+      "Feint Attack",
+      "Screech",
+      "Ancient Power",
+      "Pursuit",
+      "Beat Up"
+    ]
+  },
+  {
+    "species": "Meowth",
+    "moves": [
+      "Flail",
+      "Spite",
+      "Charm",
+      "Hypnosis",
+      "Amnesia",
+      "Tail Whip"
+    ]
+  },
+  {
+    "species": "Psyduck",
+    "moves": [
+      "Hypnosis",
+      "Foresight",
+      "Psybeam",
+      "Confuse Ray",
+      "Future Sight",
+      "Cross Chop",
+      "Light Screen",
+      "Ice Beam"
+    ]
+  },
+  {
+    "species": "Mankey",
+    "moves": [
+      "Foresight",
+      "Meditate",
+      "Counter",
+      "Reversal",
+      "Beat Up",
+      "Spite",
+      "Curse"
+    ]
+  },
+  {
+    "species": "Growlithe",
+    "moves": [
+      "Body Slam",
+      "Safeguard",
+      "Double Kick",
+      "Thrash",
+      "Fire Spin",
+      "Spark"
+    ]
+  },
+  {
+    "species": "Poliwag",
+    "moves": [
+      "Mist",
+      "Bubble Beam",
+      "Haze",
+      "Mind Reader",
+      "Earth Power"
+    ]
+  },
+  {
+    "species": "Abra",
+    "moves": [
+      "Encore",
+      "Barrier",
+      "Light Screen",
+      "Confusion"
+    ]
+  },
+  {
+    "species": "Machop",
+    "moves": [
+      "Light Screen",
+      "Meditate",
+      "Low Kick",
+      "Encore",
+      "Thrash",
+      "Bullet Punch"
+    ]
+  },
+  {
+    "species": "Bellsprout",
+    "moves": [
+      "Swords Dance",
+      "Encore",
+      "Swift",
+      "Screech",
+      "Synthesis",
+      "Sweet Kiss",
+      "Leech Life"
+    ]
+  },
+  {
+    "species": "Tentacool",
+    "moves": [
+      "Aurora Beam",
+      "Mirror Coat",
+      "Rapid Spin",
+      "Haze",
+      "Safeguard",
+      "Mega Drain"
+    ]
+  },
+  {
+    "species": "Geodude",
+    "moves": [
+      "Flail",
+      "Dynamic Punch",
+      "Drain Punch",
+      "Curse",
+      "Harden"
+    ]
+  },
+  {
+    "species": "Ponyta",
+    "moves": [
+      "Flame Wheel",
+      "Thrash",
+      "Double Kick",
+      "Hypnosis",
+      "Charm",
+      "Quick Attack",
+      "Tail Whip",
+      "Low Kick"
+    ]
+  },
+  {
+    "species": "Slowpoke",
+    "moves": [
+      "Safeguard",
+      "Swift",
+      "Stomp",
+      "Belly Drum",
+      "Future Sight",
+      "Light Screen",
+      "Headbutt"
+    ]
+  },
+  {
+    "species": "Farfetch'd",
+    "moves": [
+      "Foresight",
+      "Mirror Move",
+      "Gust",
+      "Quick Attack",
+      "Flail"
+    ]
+  },
+  {
+    "species": "Doduo",
+    "moves": [
+      "Quick Attack",
+      "Supersonic",
+      "Haze",
+      "Feint Attack",
+      "Flail",
+      "Take Down",
+      "Screech"
+    ]
+  },
+  {
+    "species": "Seel",
+    "moves": [
+      "Lick",
+      "Perish Song",
+      "Disable",
+      "Peck",
+      "Encore",
+      "Sleep Talk",
+      "Horn Drill"
+    ]
+  },
+  {
+    "species": "Grimer",
+    "moves": [
+      "Dynamic Punch",
+      "Haze",
+      "Mean Look",
+      "Lick",
+      "Curse"
+    ]
+  },
+  {
+    "species": "Shellder",
+    "moves": [
+      "Bubble Beam",
+      "Barrier",
+      "Rapid Spin",
+      "Screech",
+      "Take Down"
+    ]
+  },
+  {
+    "species": "Gastly",
+    "moves": [
+      "Psywave",
+      "Perish Song",
+      "Haze",
+      "Disable",
+      "Toxic"
+    ]
+  },
+  {
+    "species": "Onix",
+    "moves": [
+      "Defense Curl",
+      "Rollout",
+      "Flail"
+    ]
+  },
+  {
+    "species": "Drowzee",
+    "moves": [
+      "Light Screen",
+      "Barrier",
+      "Mind Reader",
+      "Amnesia",
+      "Psywave",
+      "Dynamic Punch"
+    ]
+  },
+  {
+    "species": "Krabby",
+    "moves": [
+      "Ancient Power",
+      "Dig",
+      "Cut",
+      "Haze",
+      "Amnesia",
+      "Flail"
+    ]
+  },
+  {
+    "species": "Exeggcute",
+    "moves": [
+      "Ancient Power",
+      "Curse",
+      "Moonlight",
+      "Poison Powder",
+      "Sleep Powder",
+      "Stun Spore",
+      "Future Sight"
+    ]
+  },
+  {
+    "species": "Cubone",
+    "moves": [
+      "Ancient Power",
+      "Belly Drum",
+      "Curse",
+      "Detect",
+      "Double Kick",
+      "Rock Smash",
+      "Leer",
+      "Sing",
+      "Skull Bash",
+      "Perish Song"
+    ]
+  },
+  {
+    "species": "Lickitung",
+    "moves": [
+      "Belly Drum",
+      "Bulldoze",
+      "Body Slam"
+    ]
+  },
+  {
+    "species": "Koffing",
+    "moves": [
+      "Screech",
+      "Psywave",
+      "Destiny Bond",
+      "Pain Split",
+      "Curse",
+      "Spite"
+    ]
+  },
+  {
+    "species": "Rhyhorn",
+    "moves": [
+      "Reversal",
+      "Rock Slide",
+      "Thrash",
+      "Pursuit",
+      "Counter",
+      "Rollout",
+      "Rock Smash"
+    ]
+  },
+  {
+    "species": "Chansey",
+    "moves": [
+      "Metronome",
+      "Heal Bell",
+      "Endure",
+      "Mud Slap",
+      "Seismic Toss"
+    ]
+  },
+  {
+    "species": "Tangela",
+    "moves": [
+      "Flail",
+      "Mega Drain",
+      "Confusion",
+      "Amnesia",
+      "Leech Seed"
+    ]
+  },
+  {
+    "species": "Kangaskhan",
+    "moves": [
+      "Stomp",
+      "Foresight",
+      "Focus Energy",
+      "Safeguard",
+      "Disable",
+      "Take Down",
+      "Counter"
+    ]
+  },
+  {
+    "species": "Horsea",
+    "moves": [
+      "Flail",
+      "Aurora Beam",
+      "Octazooka",
+      "Disable",
+      "Dragon Rage",
+      "Dragon Breath",
+      "Snore",
+      "Outrage"
+    ]
+  },
+  {
+    "species": "Goldeen",
+    "moves": [
+      "Psybeam",
+      "Haze",
+      "Hydro Pump",
+      "Body Slam",
+      "Mud Slap",
+      "Sleep Talk"
+    ]
+  },
+  {
+    "species": "Mr. Mime",
+    "moves": [
+      "Future Sight",
+      "Hypnosis",
+      "Mimic",
+      "Meditate",
+      "Safeguard"
+    ]
+  },
+  {
+    "species": "Scyther",
+    "moves": [
+      "Counter",
+      "Safeguard",
+      "Baton Pass",
+      "Reversal",
+      "Light Screen"
+    ]
+  },
+  {
+    "species": "Pinsir",
+    "moves": [
+      "Fury Attack",
+      "Quick Attack",
+      "Flail",
+      "Thrash",
+      "Feint Attack",
+      "Bide",
+      "Take Down"
+    ]
+  },
+  {
+    "species": "Lapras",
+    "moves": [
+      "Aurora Beam",
+      "Bite",
+      "Future Sight",
+      "Foresight",
+      "Ancient Power",
+      "Dragon Rage",
+      "Horn Drill"
+    ]
+  },
+  {
+    "species": "Eevee",
+    "moves": [
+      "Curse",
+      "Flail",
+      "Double Kick",
+      "Detect",
+      "Mud Slap",
+      "Endure"
+    ]
+  },
+  {
+    "species": "Omanyte",
+    "moves": [
+      "Bubble Beam",
+      "Aurora Beam",
+      "Supersonic",
+      "Spikes",
+      "Spike Cannon",
+      "Bite",
+      "Bide",
+      "Haze",
+      "Earth Power"
+    ]
+  },
+  {
+    "species": "Kabuto",
+    "moves": [
+      "Bubble Beam",
+      "Aurora Beam",
+      "Rapid Spin",
+      "Mega Drain",
+      "Flail",
+      "Confuse Ray",
+      "Screech",
+      "Endure",
+      "Take Down"
+    ]
+  },
+  {
+    "species": "Aerodactyl",
+    "moves": [
+      "Whirlwind",
+      "Pursuit",
+      "Foresight",
+      "Steel Wing",
+      "Dragon Rage"
+    ]
+  },
+  {
+    "species": "Snorlax",
+    "moves": [
+      "Counter",
+      "Curse",
+      "Rollout",
+      "Rock Smash"
+    ]
+  },
+  {
+    "species": "Dratini",
+    "moves": [
+      "Light Screen",
+      "Mist",
+      "Haze",
+      "Supersonic",
+      "Barrier",
+      "Aqua Jet",
+      "Dragon Breath",
+      "Extreme Speed",
+      "Hydro Pump"
+    ]
+  },
+  {
+    "species": "Chikorita",
+    "moves": [
+      "Petal Dance",
+      "Safeguard",
+      "Counter",
+      "Ancient Power",
+      "Flail",
+      "Swords Dance",
+      "Stomp",
+      "Sleep Powder",
+      "Leech Seed",
+      "Earth Power"
+    ]
+  },
+  {
+    "species": "Cyndaquil",
+    "moves": [
+      "Double Kick",
+      "Quick Attack",
+      "Reversal",
+      "Thrash",
+      "Foresight",
+      "Fury Swipes",
+      "Submission",
+      "Seismic Toss",
+      "Endure",
+      "Fury Cutter"
+    ]
+  },
+  {
+    "species": "Totodile",
+    "moves": [
+      "Thrash",
+      "Hydro Pump",
+      "Ancient Power",
+      "Rock Slide",
+      "Dynamic Punch",
+      "Aqua Jet"
+    ]
+  },
+  {
+    "species": "Sentret",
+    "moves": [
+      "Pursuit",
+      "Focus Energy",
+      "Reversal",
+      "Cut"
+    ]
+  },
+  {
+    "species": "Hoothoot",
+    "moves": [
+      "Mirror Move",
+      "Supersonic",
+      "Feint Attack",
+      "Whirlwind",
+      "Brave Bird",
+      "Moonlight",
+      "Night Shade"
+    ]
+  },
+  {
+    "species": "Ledyba",
+    "moves": [
+      "Psybeam",
+      "Bide",
+      "Counter",
+      "Screech",
+      "Encore"
+    ]
+  },
+  {
+    "species": "Spinarak",
+    "moves": [
+      "Psybeam",
+      "Disable",
+      "Sonic Boom",
+      "Baton Pass",
+      "Pursuit",
+      "Megahorn"
+    ]
+  },
+  {
+    "species": "Chinchou",
+    "moves": [
+      "Mist",
+      "Psybeam",
+      "Flail",
+      "Screech",
+      "Supersonic",
+      "Amnesia",
+      "Agility",
+      "Whirlpool"
+    ]
+  },
+  {
+    "species": "Pichu",
+    "moves": [
+      "Reversal",
+      "Bide",
+      "Encore",
+      "Double Slap",
+      "Sing"
+    ]
+  },
+  {
+    "species": "Cleffa",
+    "moves": [
+      "Metronome",
+      "Amnesia",
+      "Belly Drum",
+      "Mimic",
+      "Mirror Coat"
+    ]
+  },
+  {
+    "species": "Igglybuff",
+    "moves": [
+      "Perish Song",
+      "Feint Attack",
+      "Rollout",
+      "Counter",
+      "Disable"
+    ]
+  },
+  {
+    "species": "Togepi",
+    "moves": [
+      "Aerial Ace",
+      "Mirror Move",
+      "Peck",
+      "Foresight",
+      "Future Sight"
+    ]
+  },
+  {
+    "species": "Natu",
+    "moves": [
+      "Haze",
+      "Drill Peck",
+      "Quick Attack",
+      "Feint Attack",
+      "Steel Wing"
+    ]
+  },
+  {
+    "species": "Mareep",
+    "moves": [
+      "Thunderbolt",
+      "Take Down",
+      "Body Slam",
+      "Safeguard",
+      "Screech",
+      "Reflect",
+      "Agility",
+      "Sand Attack",
+      "Iron Tail"
+    ]
+  },
+  {
+    "species": "Marill",
+    "moves": [
+      "Light Screen",
+      "Amnesia",
+      "Future Sight",
+      "Belly Drum",
+      "Perish Song",
+      "Supersonic",
+      "Foresight",
+      "Scary Face",
+      "Sing",
+      "Aqua Jet"
+    ]
+  },
+  {
+    "species": "Sudowoodo",
+    "moves": [
+      "Self-Destruct",
+      "Curse",
+      "Defense Curl",
+      "Endure",
+      "Harden",
+      "Rollout"
+    ]
+  },
+  {
+    "species": "Hoppip",
+    "moves": [
+      "Confusion",
+      "Growl",
+      "Encore",
+      "Reflect",
+      "Amnesia"
+    ]
+  },
+  {
+    "species": "Aipom",
+    "moves": [
+      "Counter",
+      "Screech",
+      "Pursuit",
+      "Agility",
+      "Spite",
+      "Double Slap",
+      "Beat Up"
+    ]
+  },
+  {
+    "species": "Yanma",
+    "moves": [
+      "Whirlwind",
+      "Reversal",
+      "Leech Life",
+      "Feint Attack",
+      "Pursuit"
+    ]
+  },
+  {
+    "species": "Wooper",
+    "moves": [
+      "Body Slam",
+      "Ancient Power",
+      "Safeguard",
+      "Belly Drum",
+      "Scary Face",
+      "Double Kick",
+      "Encore",
+      "Recover",
+      "Earth Power"
+    ]
+  },
+  {
+    "species": "Murkrow",
+    "moves": [
+      "Whirlwind",
+      "Drill Peck",
+      "Quick Attack",
+      "Mirror Move",
+      "Wing Attack",
+      "Screech",
+      "Perish Song",
+      "Psych Up"
+    ]
+  },
+  {
+    "species": "Misdreavus",
+    "moves": [
+      "Screech",
+      "Destiny Bond",
+      "Hypnosis",
+      "Future Sight"
+    ]
+  },
+  {
+    "species": "Girafarig",
+    "moves": [
+      "Take Down",
+      "Amnesia",
+      "Mean Look",
+      "Future Sight",
+      "Beat Up",
+      "Double Kick"
+    ]
+  },
+  {
+    "species": "Pineco",
+    "moves": [
+      "Reflect",
+      "Pin Missile",
+      "Flail",
+      "Swift",
+      "Endure"
+    ]
+  },
+  {
+    "species": "Dunsparce",
+    "moves": [
+      "Bide",
+      "Rock Slide",
+      "Bite",
+      "Hex"
+    ]
+  },
+  {
+    "species": "Gligar",
+    "moves": [
+      "Metal Claw",
+      "Wing Attack",
+      "Counter",
+      "Agility",
+      "Take Down",
+      "Spikes"
+    ]
+  },
+  {
+    "species": "Snubbull",
+    "moves": [
+      "Metronome",
+      "Feint Attack",
+      "Reflect",
+      "Dynamic Punch",
+      "Heal Bell",
+      "Mimic",
+      "Leer",
+      "Snore",
+      "Sweet Kiss"
+    ]
+  },
+  {
+    "species": "Qwilfish",
+    "moves": [
+      "Flail",
+      "Haze",
+      "Bubble Beam",
+      "Supersonic",
+      "Aqua Jet"
+    ]
+  },
+  {
+    "species": "Shuckle",
+    "moves": [
+      "Acid",
+      "Defense Curl",
+      "Mud Slap",
+      "Snore",
+      "Toxic"
+    ]
+  },
+  {
+    "species": "Heracross",
+    "moves": [
+      "Harden",
+      "Bide",
+      "Flail",
+      "Seismic Toss",
+      "Dynamic Punch",
+      "Megahorn",
+      "Pursuit"
+    ]
+  },
+  {
+    "species": "Sneasel",
+    "moves": [
+      "Counter",
+      "Spite",
+      "Foresight",
+      "Reflect",
+      "Bite",
+      "Feint Attack",
+      "Pursuit",
+      "Ice Shard"
+    ]
+  },
+  {
+    "species": "Teddiursa",
+    "moves": [
+      "Belly Drum",
+      "Dynamic Punch",
+      "Cross Chop",
+      "Crunch",
+      "Fury Cutter",
+      "Metal Claw",
+      "Seismic Toss",
+      "Take Down"
+    ]
+  },
+  {
+    "species": "Slugma",
+    "moves": [
+      "Acid Armor",
+      "Curse",
+      "Smokescreen"
+    ]
+  },
+  {
+    "species": "Swinub",
+    "moves": [
+      "Bite",
+      "Ancient Power",
+      "Take Down",
+      "Rock Slide",
+      "Flail",
+      "Earth Power"
+    ]
+  },
+  {
+    "species": "Corsola",
+    "moves": [
+      "Safeguard",
+      "Screech",
+      "Mist",
+      "Amnesia",
+      "Confuse Ray",
+      "Curse",
+      "Rock Slide",
+      "Bide",
+      "Barrier",
+      "Earth Power"
+    ]
+  },
+  {
+    "species": "Remoraid",
+    "moves": [
+      "Aurora Beam",
+      "Supersonic",
+      "Haze",
+      "Screech",
+      "Flail",
+      "Octazooka",
+      "Snore",
+      "Swift"
+    ]
+  },
+  {
+    "species": "Delibird",
+    "moves": [
+      "Aurora Beam",
+      "Future Sight",
+      "Quick Attack",
+      "Rapid Spin",
+      "Spikes",
+      "Brave Bird"
+    ]
+  },
+  {
+    "species": "Mantine",
+    "moves": [
+      "Hydro Pump",
+      "Haze",
+      "Confuse Ray",
+      "Mirror Coat"
+    ]
+  },
+  {
+    "species": "Skarmory",
+    "moves": [
+      "Pursuit",
+      "Whirlwind",
+      "Brave Bird",
+      "Drill Peck",
+      "Endure",
+      "Fury Cutter"
+    ]
+  },
+  {
+    "species": "Houndour",
+    "moves": [
+      "Fire Spin",
+      "Rage",
+      "Pursuit",
+      "Counter",
+      "Spite",
+      "Reversal",
+      "Beat Up",
+      "Destiny Bond"
+    ]
+  },
+  {
+    "species": "Phanpy",
+    "moves": [
+      "Focus Energy",
+      "Body Slam",
+      "Ancient Power",
+      "Counter",
+      "Play Rough",
+      "Water Gun"
+    ]
+  },
+  {
+    "species": "Stantler",
+    "moves": [
+      "Reflect",
+      "Spite",
+      "Disable",
+      "Light Screen",
+      "Bite",
+      "Double Kick",
+      "Megahorn",
+      "Thrash",
+      "Safeguard"
+    ]
+  },
+  {
+    "species": "Tyrogue",
+    "moves": [
+      "Rapid Spin",
+      "High Jump Kick",
+      "Mach Punch",
+      "Mind Reader",
+      "Counter",
+      "Bullet Punch"
+    ]
+  },
+  {
+    "species": "Smoochum",
+    "moves": [
+      "Hypnosis",
+      "Meditate",
+      "Ice Punch",
+      "Confusion",
+      "Nasty Plot",
+      "Sing"
+    ]
+  },
+  {
+    "species": "Elekid",
+    "moves": [
+      "Karate Chop",
+      "Barrier",
+      "Meditate",
+      "Cross Chop",
+      "Dynamic Punch",
+      "Detect"
+    ]
+  },
+  {
+    "species": "Magby",
+    "moves": [
+      "Karate Chop",
+      "Barrier",
+      "Screech",
+      "Cross Chop",
+      "Belly Drum",
+      "Mach Punch",
+      "Dynamic Punch",
+      "Focus Energy"
+    ]
+  },
+  {
+    "species": "Miltank",
+    "moves": [
+      "Reversal",
+      "Seismic Toss",
+      "Curse",
+      "Sleep Talk",
+      "Snore",
+      "Endure",
+      "Dynamic Punch"
+    ]
+  },
+  {
+    "species": "Larvitar",
+    "moves": [
+      "Pursuit",
+      "Stomp",
+      "Outrage",
+      "Focus Energy",
+      "Ancient Power"
+    ]
+  }
+]

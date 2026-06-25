@@ -2,105 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 640px;
-}
-
-/* Top section: artwork + info side by side */
-
-.topSection {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-}
-
-.artworkBox {
-  flex-shrink: 0;
-  width: 300px;
-  height: 300px;
-  background: var(--stat-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.artworkSkeleton {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: var(--card-border);
-  animation: pulse 1.4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.9; }
-}
-
-.artwork {
-  width: 280px;
-  height: 280px;
-  object-fit: contain;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding-top: 8px;
-}
-
-.types {
-  display: flex;
-  gap: 8px;
-}
-
-.typeBadge {
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 14px;
-  border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.physicalStats {
-  display: flex;
-  gap: 12px;
-}
-
-.physStat {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background: var(--stat-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 10px 20px;
-  min-width: 90px;
-}
-
-.physLabel {
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.physValue {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-@media (max-width: 540px) {
-  .topSection {
-    flex-direction: column;
-    align-items: center;
-  }
 }
 
 .backBtn {
@@ -121,6 +22,68 @@
   color: var(--text-primary);
   border-color: var(--accent);
   background: var(--accent-subtle);
+}
+
+/* Two-column layout */
+
+.columns {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Artwork */
+
+.artworkBox {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--stat-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.artworkSkeleton {
+  width: 50%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--card-border);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+.artwork {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+/* Info block */
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .header {
@@ -144,6 +107,54 @@
   letter-spacing: -0.02em;
 }
 
+.types {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.typeBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.physicalStats {
+  display: flex;
+  gap: 12px;
+}
+
+.physStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--stat-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 10px 20px;
+  min-width: 80px;
+}
+
+.physLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.physValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Sections */
+
 .section {
   display: flex;
   flex-direction: column;
@@ -159,10 +170,13 @@
   margin: 0;
 }
 
+/* Evolution */
+
 .evolutionRow {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .evolutionInto {
@@ -193,6 +207,8 @@
   font-style: italic;
 }
 
+/* Level-up moves table */
+
 .movesTable {
   display: flex;
   flex-direction: column;
@@ -203,7 +219,8 @@
 
 .movesHeader {
   display: grid;
-  grid-template-columns: 72px 1fr;
+  grid-template-columns: 72px 1fr auto;
+  align-items: center;
   padding: 8px 16px;
   background: var(--stat-bg);
   font-size: 0.7rem;
@@ -216,7 +233,8 @@
 
 .moveRow {
   display: grid;
-  grid-template-columns: 72px 1fr;
+  grid-template-columns: 72px 1fr auto;
+  align-items: center;
   padding: 10px 16px;
   border-bottom: 1px solid var(--card-border);
   transition: background 0.1s;
@@ -243,4 +261,52 @@ a.moveRow:hover {
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-primary);
+}
+
+/* Egg moves table */
+
+.eggMovesHeader {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 8px 16px;
+  background: var(--stat-bg);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.eggMoveRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--card-border);
+  transition: background 0.1s;
+  text-decoration: none;
+}
+
+.eggMoveRow:last-child {
+  border-bottom: none;
+}
+
+a.eggMoveRow:hover {
+  background: var(--accent-subtle);
+  cursor: pointer;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+
+  .artworkBox {
+    max-width: 240px;
+    align-self: center;
+  }
 }

@@ -2,11 +2,14 @@ import { Link } from 'react-router-dom'
 import pokemonData from '../../data/pokemon.json'
 import movesData from '../../data/moves.json'
 import moveTypes from '../../data/move-types.json'
+import eggMovesData from '../../data/egg-moves.json'
 import styles from './PokemonDetail.module.css'
 
 const typeByName = Object.fromEntries(moveTypes.map(t => [t.name.toLowerCase(), t]))
+const typeById = Object.fromEntries(moveTypes.map(t => [t.id, t]))
 const pokemonByName = Object.fromEntries(pokemonData.map(p => [p.name, p]))
 const moveByName = Object.fromEntries(movesData.map(m => [m.name, m]))
+const eggMovesBySpecies = Object.fromEntries(eggMovesData.map(e => [e.species, e.moves]))
 
 function EvolutionInfo({ evolution }) {
   if (!evolution) {
@@ -33,6 +36,7 @@ function EvolutionInfo({ evolution }) {
 
 export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack }) {
   const paddedId = String(pokemon.id).padStart(3, '0')
+  const eggMoves = eggMovesBySpecies[pokemon.name] || []
 
   const artwork = apiData?.sprites?.other?.['official-artwork']?.front_default
   const height = apiData ? `${(apiData.height / 10).toFixed(1)} m` : null
@@ -44,85 +48,124 @@ export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack }) 
         ← Back
       </button>
 
-      <div className={styles.topSection}>
-        <div className={styles.artworkBox}>
-          {apiLoading && <div className={styles.artworkSkeleton} />}
-          {artwork && (
-            <img
-              className={styles.artwork}
-              src={artwork}
-              alt={pokemon.name}
-              width={280}
-              height={280}
-            />
-          )}
-        </div>
-
-        <div className={styles.info}>
-          <div className={styles.header}>
-            <span className={styles.id}>#{paddedId}</span>
-            <h2 className={styles.name}>{pokemon.name}</h2>
+      <div className={styles.columns}>
+        {/* Left column: artwork + info + evolution */}
+        <div className={styles.leftCol}>
+          <div className={styles.artworkBox}>
+            {apiLoading && <div className={styles.artworkSkeleton} />}
+            {artwork && (
+              <img
+                className={styles.artwork}
+                src={artwork}
+                alt={pokemon.name}
+                width={280}
+                height={280}
+              />
+            )}
           </div>
 
-          {apiData?.types && (
-            <div className={styles.types}>
-              {apiData.types.map(({ type }) => {
-                const t = typeByName[type.name]
-                return t
-                  ? <span
-                      key={type.name}
-                      className={styles.typeBadge}
-                      style={{ backgroundColor: t.color, color: t.textColor }}
-                    >
-                      {t.name}
-                    </span>
-                  : null
+          <div className={styles.info}>
+            <div className={styles.header}>
+              <span className={styles.id}>#{paddedId}</span>
+              <h2 className={styles.name}>{pokemon.name}</h2>
+            </div>
+
+            {apiData?.types && (
+              <div className={styles.types}>
+                {apiData.types.map(({ type }) => {
+                  const t = typeByName[type.name]
+                  return t
+                    ? <span
+                        key={type.name}
+                        className={styles.typeBadge}
+                        style={{ backgroundColor: t.color, color: t.textColor }}
+                      >
+                        {t.name}
+                      </span>
+                    : null
+                })}
+              </div>
+            )}
+
+            <div className={styles.physicalStats}>
+              <div className={styles.physStat}>
+                <span className={styles.physLabel}>Height</span>
+                <span className={styles.physValue}>
+                  {apiLoading ? '—' : height}
+                </span>
+              </div>
+              <div className={styles.physStat}>
+                <span className={styles.physLabel}>Weight</span>
+                <span className={styles.physValue}>
+                  {apiLoading ? '—' : weight}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <section className={styles.section}>
+            <h3 className={styles.sectionTitle}>Evolution</h3>
+            <EvolutionInfo evolution={pokemon.evolution} />
+          </section>
+        </div>
+
+        {/* Right column: moves tables */}
+        <div className={styles.rightCol}>
+          <section className={styles.section}>
+            <h3 className={styles.sectionTitle}>Level-Up Moves</h3>
+            <div className={styles.movesTable}>
+              <div className={styles.movesHeader}>
+                <span>Level</span>
+                <span>Move</span>
+                <span>Type</span>
+              </div>
+              {pokemon.moves.map((entry, i) => {
+                const moveRecord = moveByName[entry.move]
+                const type = moveRecord ? typeById[moveRecord.typeId] : null
+                const RowTag = moveRecord ? Link : 'div'
+                const rowProps = moveRecord ? { to: `/moves/${moveRecord.id}` } : {}
+                return (
+                  <RowTag key={i} className={styles.moveRow} {...rowProps}>
+                    <span className={styles.moveLevel}>{entry.level}</span>
+                    <span className={styles.moveName}>{entry.move}</span>
+                    {type
+                      ? <span className={styles.typeBadge} style={{ backgroundColor: type.color, color: type.textColor }}>{type.name}</span>
+                      : <span />
+                    }
+                  </RowTag>
+                )
               })}
             </div>
-          )}
+          </section>
 
-          <div className={styles.physicalStats}>
-            <div className={styles.physStat}>
-              <span className={styles.physLabel}>Height</span>
-              <span className={styles.physValue}>
-                {apiLoading ? '—' : height}
-              </span>
-            </div>
-            <div className={styles.physStat}>
-              <span className={styles.physLabel}>Weight</span>
-              <span className={styles.physValue}>
-                {apiLoading ? '—' : weight}
-              </span>
-            </div>
-          </div>
+          {eggMoves.length > 0 && (
+            <section className={styles.section}>
+              <h3 className={styles.sectionTitle}>Egg Moves</h3>
+              <div className={styles.movesTable}>
+                <div className={styles.eggMovesHeader}>
+                  <span>Move</span>
+                  <span>Type</span>
+                </div>
+                {eggMoves.map((moveName, i) => {
+                  const moveRecord = moveByName[moveName]
+                  const type = moveRecord ? typeById[moveRecord.typeId] : null
+                  const RowTag = moveRecord ? Link : 'div'
+                  const rowProps = moveRecord ? { to: `/moves/${moveRecord.id}` } : {}
+                  return (
+                    <RowTag key={i} className={styles.eggMoveRow} {...rowProps}>
+                      <span className={styles.moveName}>{moveName}</span>
+                      {type
+                        ? <span className={styles.typeBadge} style={{ backgroundColor: type.color, color: type.textColor }}>{type.name}</span>
+                        : <span />
+                      }
+                    </RowTag>
+                  )
+                })}
+              </div>
+            </section>
+          )}
         </div>
       </div>
-
-      <section className={styles.section}>
-        <h3 className={styles.sectionTitle}>Evolution</h3>
-        <EvolutionInfo evolution={pokemon.evolution} />
-      </section>
-
-      <section className={styles.section}>
-        <h3 className={styles.sectionTitle}>Level-Up Moves</h3>
-        <div className={styles.movesTable}>
-          <div className={styles.movesHeader}>
-            <span>Level</span>
-            <span>Move</span>
-          </div>
-          {pokemon.moves.map((entry, i) => {
-            const moveRecord = moveByName[entry.move]
-            const RowTag = moveRecord ? Link : 'div'
-            const rowProps = moveRecord ? { to: `/moves/${moveRecord.id}` } : {}
-            return (
-              <RowTag key={i} className={styles.moveRow} {...rowProps}>
-                <span className={styles.moveLevel}>{entry.level}</span>
-                <span className={styles.moveName}>{entry.move}</span>
-              </RowTag>
-            )
-          })}
-        </div>
-      </section>
     </div>
   )
 }
