@@ -16,7 +16,7 @@ function buildLearners(moveName) {
     const entry = pokemon.moves.find(m => m.move === moveName)
     if (entry) learners.push({ pokemon, level: entry.level })
   }
-  return learners
+  return learners.sort((a, b) => a.level - b.level)
 }
 
 function buildEggLearners(moveName) {

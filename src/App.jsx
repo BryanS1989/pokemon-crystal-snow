@@ -1,9 +1,16 @@
-import { Routes, Route, NavLink } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import MovesSection from './components/move/MovesSection'
 import MoveDetailPage from './components/move/MoveDetailPage'
 import PokemonSection from './components/pokemon/PokemonSection'
 import PokemonDetailPage from './components/pokemon/PokemonDetailPage'
 import styles from './App.module.css'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
 
 export default function App() {
   return (
@@ -40,6 +47,7 @@ export default function App() {
       </header>
 
       <main className={styles.main}>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<MovesSection />} />
           <Route path="/moves/:id" element={<MoveDetailPage />} />
