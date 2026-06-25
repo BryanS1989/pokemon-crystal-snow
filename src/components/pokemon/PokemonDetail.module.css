@@ -334,9 +334,4 @@ a.eggMoveRow:hover {
   .columns {
     grid-template-columns: 1fr;
   }
-
-  .artworkBox {
-    max-width: 240px;
-    align-self: center;
-  }
 }
