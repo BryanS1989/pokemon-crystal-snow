@@ -29,7 +29,7 @@ export default function PokemonDetailPage() {
       pokemon={pokemon}
       apiData={apiData}
       apiLoading={apiLoading}
-      onBack={() => navigate('/pokemon')}
+      onBack={() => navigate(-1)}
     />
   )
 }

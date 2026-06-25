@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import pokemonData from '../../data/pokemon.json'
 import PokemonCard from './PokemonCard'
 import PokemonFilters from './PokemonFilters'
@@ -26,7 +27,12 @@ function getPageNumbers(page, totalPages) {
 export default function PokemonSection() {
   const [filters, setFilters] = useState(INITIAL_FILTERS)
   const [filtersOpen, setFiltersOpen] = useState(false)
-  const [page, setPage] = useState(1)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const page = Math.max(1, Number(searchParams.get('page') || '1'))
+
+  function setPage(p) {
+    setSearchParams({ page: String(p) }, { replace: true })
+  }
 
   const filtered = useMemo(() => {
     const name = filters.name.trim().toLowerCase()
@@ -47,7 +53,7 @@ export default function PokemonSection() {
 
   function handleFiltersChange(next) {
     setFilters(next)
-    setPage(1)
+    setSearchParams({ page: '1' }, { replace: true })
   }
 
   return (
@@ -126,7 +132,7 @@ export default function PokemonSection() {
               {totalPages > 1 && (
                 <div className={styles.pagination}>
                   <button className={styles.pageBtn} onClick={() => setPage(1)} disabled={page === 1} title="First page">«</button>
-                  <button className={styles.pageBtn} onClick={() => setPage(p => p - 1)} disabled={page === 1} title="Previous page">‹</button>
+                  <button className={styles.pageBtn} onClick={() => setPage(page - 1)} disabled={page === 1} title="Previous page">‹</button>
 
                   {pageNumbers.map((p, i) =>
                     p === '...'
@@ -140,7 +146,7 @@ export default function PokemonSection() {
                         </button>
                   )}
 
-                  <button className={styles.pageBtn} onClick={() => setPage(p => p + 1)} disabled={page === totalPages} title="Next page">›</button>
+                  <button className={styles.pageBtn} onClick={() => setPage(page + 1)} disabled={page === totalPages} title="Next page">›</button>
                   <button className={styles.pageBtn} onClick={() => setPage(totalPages)} disabled={page === totalPages} title="Last page">»</button>
                 </div>
               )}
