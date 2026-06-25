@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom'
 import styles from './MoveCard.module.css'
 
 export default function MoveCard({ move, type }) {
   return (
-    <article className={styles.card}>
+    <Link className={styles.card} to={`/moves/${move.id}`}>
       <div className={styles.header}>
         <h3 className={styles.name}>{move.name}</h3>
         <span
@@ -18,9 +19,9 @@ export default function MoveCard({ move, type }) {
           <span className={styles.statLabel}>Power</span>
           <span className={styles.statValue}>
             {move.power === '★'
-            ? <span title="One-hit KO or damage based on level/HP" style={{ cursor: 'help' }}>★</span>
-            : move.power !== null ? move.power : '—'
-          }
+              ? <span title="One-hit KO or damage based on level/HP" style={{ cursor: 'help' }}>★</span>
+              : move.power !== null ? move.power : '—'
+            }
           </span>
         </div>
         <div className={styles.stat}>
@@ -40,6 +41,6 @@ export default function MoveCard({ move, type }) {
       </div>
 
       <p className={styles.description}>{move.description}</p>
-    </article>
+    </Link>
   )
 }

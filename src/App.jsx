@@ -1,4 +1,8 @@
+import { Routes, Route, NavLink } from 'react-router-dom'
 import MovesSection from './components/move/MovesSection'
+import MoveDetailPage from './components/move/MoveDetailPage'
+import PokemonSection from './components/pokemon/PokemonSection'
+import PokemonDetailPage from './components/pokemon/PokemonDetailPage'
 import styles from './App.module.css'
 
 export default function App() {
@@ -14,13 +18,34 @@ export default function App() {
             </div>
           </div>
           <nav className={styles.nav}>
-            <a className={`${styles.navLink} ${styles.navLinkActive}`}>Moves</a>
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              Moves
+            </NavLink>
+            <NavLink
+              to="/pokemon"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              Pokémon
+            </NavLink>
           </nav>
         </div>
       </header>
 
       <main className={styles.main}>
-        <MovesSection />
+        <Routes>
+          <Route path="/" element={<MovesSection />} />
+          <Route path="/moves/:id" element={<MoveDetailPage />} />
+          <Route path="/pokemon" element={<PokemonSection />} />
+          <Route path="/pokemon/:id" element={<PokemonDetailPage />} />
+        </Routes>
       </main>
 
       <footer className={styles.footer}>

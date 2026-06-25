@@ -1,0 +1,116 @@
+import { useParams, useNavigate, Link } from 'react-router-dom'
+import movesData from '../../data/moves.json'
+import typesData from '../../data/move-types.json'
+import pokemonData from '../../data/pokemon.json'
+import styles from './MoveDetailPage.module.css'
+
+const typeMap = Object.fromEntries(typesData.map(t => [t.id, t]))
+
+const SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
+
+function buildLearners(moveName) {
+  const learners = []
+  for (const pokemon of pokemonData) {
+    const entry = pokemon.moves.find(m => m.move === moveName)
+    if (entry) learners.push({ pokemon, level: entry.level })
+  }
+  return learners
+}
+
+export default function MoveDetailPage() {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const move = movesData.find(m => m.id === Number(id))
+
+  if (!move) {
+    return <p style={{ color: 'var(--text-muted)', padding: '32px' }}>Move not found.</p>
+  }
+
+  const type = typeMap[move.typeId]
+  const learners = buildLearners(move.name)
+
+  return (
+    <div className={styles.wrapper}>
+      <button className={styles.backBtn} onClick={() => navigate('/')}>
+        ← Back
+      </button>
+
+      {/* Move info */}
+      <div className={styles.moveCard}>
+        <div className={styles.moveHeader}>
+          <h2 className={styles.moveName}>{move.name}</h2>
+          <span
+            className={styles.typeBadge}
+            style={{ backgroundColor: type.color, color: type.textColor }}
+          >
+            {type.name}
+          </span>
+        </div>
+
+        <div className={styles.stats}>
+          <div className={styles.stat}>
+            <span className={styles.statLabel}>Power</span>
+            <span className={styles.statValue}>
+              {move.power === '★'
+                ? <span title="One-hit KO or damage based on level/HP" style={{ cursor: 'help' }}>★</span>
+                : move.power !== null ? move.power : '—'
+              }
+            </span>
+          </div>
+          <div className={styles.stat}>
+            <span className={styles.statLabel}>Accuracy</span>
+            <span className={styles.statValue}>{move.accuracy}%</span>
+          </div>
+          <div className={styles.stat}>
+            <span className={styles.statLabel}>PP</span>
+            <span className={styles.statValue}>{move.pp}</span>
+          </div>
+          <div className={styles.stat}>
+            <span className={styles.statLabel}>Effect%</span>
+            <span className={styles.statValue}>
+              {move.effect !== null ? `${move.effect}%` : '—'}
+            </span>
+          </div>
+        </div>
+
+        <p className={styles.description}>{move.description}</p>
+      </div>
+
+      {/* Learners */}
+      <section className={styles.learnersSection}>
+        <div className={styles.learnersHeader}>
+          <h3 className={styles.learnersTitle}>Pokémon that learn this move</h3>
+          <span className={styles.learnersCount}>{learners.length}</span>
+        </div>
+
+        {learners.length === 0 ? (
+          <p className={styles.noLearners}>No Pokémon in the Pokédex learn this move.</p>
+        ) : (
+          <div className={styles.learnersGrid}>
+            {learners.map(({ pokemon, level }) => (
+              <Link
+                key={pokemon.id}
+                to={`/pokemon/${pokemon.id}`}
+                className={styles.learnerRow}
+              >
+                <span className={styles.learnerId}>
+                  #{String(pokemon.id).padStart(3, '0')}
+                </span>
+                <img
+                  src={`${SPRITE_BASE}/${pokemon.id}.png`}
+                  alt={pokemon.name}
+                  width={48}
+                  height={48}
+                  className={styles.learnerSprite}
+                  loading="lazy"
+                />
+                <span className={styles.learnerName}>{pokemon.name}</span>
+                <span className={styles.learnerLevel}>Lv. {level}</span>
+              </Link>
+            ))}
+          </div>
+        )}
+      </section>
+    </div>
+  )
+}

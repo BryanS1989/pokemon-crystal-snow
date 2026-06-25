@@ -1,0 +1,246 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 640px;
+}
+
+/* Top section: artwork + info side by side */
+
+.topSection {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.artworkBox {
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  background: var(--stat-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.artworkSkeleton {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: var(--card-border);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+.artwork {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.types {
+  display: flex;
+  gap: 8px;
+}
+
+.typeBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.physicalStats {
+  display: flex;
+  gap: 12px;
+}
+
+.physStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--stat-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 10px 20px;
+  min-width: 90px;
+}
+
+.physLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.physValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+@media (max-width: 540px) {
+  .topSection {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.backBtn {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.backBtn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.id {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.evolutionRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.evolutionInto {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.evolutionInto:hover {
+  text-decoration: underline;
+}
+
+.evolutionTrigger {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  background: var(--stat-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 3px 12px;
+  text-transform: capitalize;
+}
+
+.noEvolution {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+.movesTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.movesHeader {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  padding: 8px 16px;
+  background: var(--stat-bg);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.moveRow {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--card-border);
+  transition: background 0.1s;
+  text-decoration: none;
+}
+
+.moveRow:last-child {
+  border-bottom: none;
+}
+
+a.moveRow:hover {
+  background: var(--accent-subtle);
+  cursor: pointer;
+}
+
+.moveLevel {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.moveName {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
