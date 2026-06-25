@@ -116,11 +116,13 @@
 .typeBadge {
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 4px 14px;
+  padding: 4px 0;
   border-radius: 20px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   white-space: nowrap;
+  min-width: 90px;
+  text-align: center;
 }
 
 .physicalStats {
