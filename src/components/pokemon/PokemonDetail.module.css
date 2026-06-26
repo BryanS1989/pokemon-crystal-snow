@@ -174,6 +174,12 @@
 
 /* Evolution */
 
+.evolutionList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .evolutionCard {
   display: flex;
   align-items: center;
@@ -186,6 +192,22 @@
   transition: border-color 0.15s, background 0.15s;
   width: 100%;
   box-sizing: border-box;
+}
+
+.evolutionCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .evolutionCardBody {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
 }
 
 a.evolutionCard:hover {
@@ -220,6 +242,9 @@ a.evolutionCard:hover {
 }
 
 .evolutionTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 0.78rem;
   color: var(--text-secondary);
   background: var(--stat-bg);
@@ -228,6 +253,13 @@ a.evolutionCard:hover {
   padding: 3px 10px;
   text-transform: capitalize;
   width: fit-content;
+}
+
+.evolutionItemSprite {
+  width: 20px;
+  height: 20px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
 }
 
 .noEvolution {

@@ -2,11 +2,13 @@
   {
     "id": 1,
     "name": "Bulbasaur",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 16,
-      "into": "Ivysaur"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 16,
+        "into": "Ivysaur"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -61,11 +63,13 @@
   {
     "id": 2,
     "name": "Ivysaur",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 32,
-      "into": "Venusaur"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 32,
+        "into": "Venusaur"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -179,11 +183,13 @@
   {
     "id": 4,
     "name": "Charmander",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 16,
-      "into": "Charmeleon"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 16,
+        "into": "Charmeleon"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -226,11 +232,13 @@
   {
     "id": 5,
     "name": "Charmeleon",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 36,
-      "into": "Charizard"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 36,
+        "into": "Charizard"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -336,11 +344,13 @@
   {
     "id": 7,
     "name": "Squirtle",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 16,
-      "into": "Wartortle"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 16,
+        "into": "Wartortle"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -391,11 +401,13 @@
   {
     "id": 8,
     "name": "Wartortle",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 36,
-      "into": "Blastoise"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 36,
+        "into": "Blastoise"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -513,11 +525,13 @@
   {
     "id": 10,
     "name": "Caterpie",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 7,
-      "into": "Metapod"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 7,
+        "into": "Metapod"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -536,11 +550,13 @@
   {
     "id": 11,
     "name": "Metapod",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 10,
-      "into": "Butterfree"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 10,
+        "into": "Butterfree"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -610,11 +626,13 @@
   {
     "id": 13,
     "name": "Weedle",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 7,
-      "into": "Kakuna"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 7,
+        "into": "Kakuna"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -629,11 +647,13 @@
   {
     "id": 14,
     "name": "Kakuna",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 10,
-      "into": "Beedrill"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 10,
+        "into": "Beedrill"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -699,11 +719,13 @@
   {
     "id": 16,
     "name": "Pidgey",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 18,
-      "into": "Pidgeotto"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 18,
+        "into": "Pidgeotto"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -754,11 +776,13 @@
   {
     "id": 17,
     "name": "Pidgeotto",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 36,
-      "into": "Pidgeot"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 36,
+        "into": "Pidgeot"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -864,11 +888,13 @@
   {
     "id": 19,
     "name": "Rattata",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 20,
-      "into": "Raticate"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 20,
+        "into": "Raticate"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -978,11 +1004,13 @@
   {
     "id": 21,
     "name": "Spearow",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 20,
-      "into": "Fearow"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 20,
+        "into": "Fearow"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1084,11 +1112,13 @@
   {
     "id": 23,
     "name": "Ekans",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 22,
-      "into": "Arbok"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 22,
+        "into": "Arbok"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1194,11 +1224,13 @@
   {
     "id": 25,
     "name": "Pikachu",
-    "evolution": {
-      "type": "ITEM",
-      "item": "THUNDERSTONE",
-      "into": "Raichu"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "THUNDER_STONE",
+        "into": "Raichu"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1272,11 +1304,13 @@
   {
     "id": 27,
     "name": "Sandshrew",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 22,
-      "into": "Sandslash"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 22,
+        "into": "Sandslash"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1394,11 +1428,13 @@
   {
     "id": 29,
     "name": "Nidoran♀",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 16,
-      "into": "Nidorina"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 16,
+        "into": "Nidorina"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1441,11 +1477,13 @@
   {
     "id": 30,
     "name": "Nidorina",
-    "evolution": {
-      "type": "ITEM",
-      "item": "MOON_STONE",
-      "into": "Nidoqueen"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "MOON_STONE",
+        "into": "Nidoqueen"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1511,11 +1549,13 @@
   {
     "id": 32,
     "name": "Nidoran♂",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 16,
-      "into": "Nidorino"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 16,
+        "into": "Nidorino"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1558,11 +1598,13 @@
   {
     "id": 33,
     "name": "Nidorino",
-    "evolution": {
-      "type": "ITEM",
-      "item": "MOON_STONE",
-      "into": "Nidoking"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "MOON_STONE",
+        "into": "Nidoking"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1628,11 +1670,13 @@
   {
     "id": 35,
     "name": "Clefairy",
-    "evolution": {
-      "type": "ITEM",
-      "item": "MOON_STONE",
-      "into": "Clefable"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "MOON_STONE",
+        "into": "Clefable"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1710,11 +1754,13 @@
   {
     "id": 37,
     "name": "Vulpix",
-    "evolution": {
-      "type": "ITEM",
-      "item": "FIRE_STONE",
-      "into": "Ninetales"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "FIRE_STONE",
+        "into": "Ninetales"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1792,11 +1838,13 @@
   {
     "id": 39,
     "name": "Jigglypuff",
-    "evolution": {
-      "type": "ITEM",
-      "item": "MOON_STONE",
-      "into": "Wigglytuff"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "MOON_STONE",
+        "into": "Wigglytuff"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1870,11 +1918,13 @@
   {
     "id": 41,
     "name": "Zubat",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 22,
-      "into": "Golbat"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 22,
+        "into": "Golbat"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1925,11 +1975,10 @@
   {
     "id": 42,
     "name": "Golbat",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 50,
-      "into": "Crobat"
-    },
+    "evolution": [
+      { "type": "LEVEL", "level": 50, "into": "Crobat" },
+      { "type": "FRIENDSHIP", "into": "Crobat" }
+    ],
     "moves": [
       {
         "level": 1,
@@ -1984,11 +2033,13 @@
   {
     "id": 43,
     "name": "Oddish",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 21,
-      "into": "Gloom"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 21,
+        "into": "Gloom"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2035,11 +2086,10 @@
   {
     "id": 44,
     "name": "Gloom",
-    "evolution": {
-      "type": "ITEM",
-      "item": "LEAF_STONE",
-      "into": "Vileplume"
-    },
+    "evolution": [
+      { "type": "ITEM", "item": "LEAF_STONE", "into": "Vileplume" },
+      { "type": "ITEM", "item": "SUN_STONE", "into": "Bellossom" }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2109,11 +2159,13 @@
   {
     "id": 46,
     "name": "Paras",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 24,
-      "into": "Parasect"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 24,
+        "into": "Parasect"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2219,11 +2271,13 @@
   {
     "id": 48,
     "name": "Venonat",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 31,
-      "into": "Venomoth"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 31,
+        "into": "Venomoth"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2329,11 +2383,13 @@
   {
     "id": 50,
     "name": "Diglett",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 26,
-      "into": "Dugtrio"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 26,
+        "into": "Dugtrio"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2399,11 +2455,13 @@
   {
     "id": 52,
     "name": "Meowth",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 28,
-      "into": "Persian"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 28,
+        "into": "Persian"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2493,11 +2551,13 @@
   {
     "id": 54,
     "name": "Psyduck",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 33,
-      "into": "Golduck"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 33,
+        "into": "Golduck"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2595,11 +2655,13 @@
   {
     "id": 56,
     "name": "Mankey",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 28,
-      "into": "Primeape"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 28,
+        "into": "Primeape"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2697,11 +2759,13 @@
   {
     "id": 58,
     "name": "Growlithe",
-    "evolution": {
-      "type": "ITEM",
-      "item": "FIRE_STONE",
-      "into": "Arcanine"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "FIRE_STONE",
+        "into": "Arcanine"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2771,11 +2835,13 @@
   {
     "id": 60,
     "name": "Poliwag",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 25,
-      "into": "Poliwhirl"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 25,
+        "into": "Poliwhirl"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2822,11 +2888,10 @@
   {
     "id": 61,
     "name": "Poliwhirl",
-    "evolution": {
-      "type": "ITEM",
-      "item": "WATER_STONE",
-      "into": "Poliwrath"
-    },
+    "evolution": [
+      { "type": "ITEM", "item": "WATER_STONE", "into": "Poliwrath" },
+      { "type": "ITEM", "item": "KINGS_ROCK", "into": "Politoed" }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2896,11 +2961,13 @@
   {
     "id": 63,
     "name": "Abra",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 16,
-      "into": "Kadabra"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 16,
+        "into": "Kadabra"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2911,11 +2978,13 @@
   {
     "id": 64,
     "name": "Kadabra",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 45,
-      "into": "Alakazam"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 45,
+        "into": "Alakazam"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -2989,11 +3058,13 @@
   {
     "id": 66,
     "name": "Machop",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 28,
-      "into": "Machoke"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 28,
+        "into": "Machoke"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3044,11 +3115,13 @@
   {
     "id": 67,
     "name": "Machoke",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 44,
-      "into": "Machamp"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 44,
+        "into": "Machamp"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3122,11 +3195,13 @@
   {
     "id": 69,
     "name": "Bellsprout",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 21,
-      "into": "Weepinbell"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 21,
+        "into": "Weepinbell"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3181,11 +3256,13 @@
   {
     "id": 70,
     "name": "Weepinbell",
-    "evolution": {
-      "type": "ITEM",
-      "item": "LEAF_STONE",
-      "into": "Victreebel"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "LEAF_STONE",
+        "into": "Victreebel"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3263,11 +3340,13 @@
   {
     "id": 72,
     "name": "Tentacool",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 30,
-      "into": "Tentacruel"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 30,
+        "into": "Tentacruel"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3357,11 +3436,13 @@
   {
     "id": 74,
     "name": "Geodude",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 25,
-      "into": "Graveler"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 25,
+        "into": "Graveler"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3408,11 +3489,13 @@
   {
     "id": 75,
     "name": "Graveler",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 40,
-      "into": "Golem"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 40,
+        "into": "Golem"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3482,11 +3565,13 @@
   {
     "id": 77,
     "name": "Ponyta",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 40,
-      "into": "Rapidash"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 40,
+        "into": "Rapidash"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3592,11 +3677,10 @@
   {
     "id": 79,
     "name": "Slowpoke",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 37,
-      "into": "Slowbro"
-    },
+    "evolution": [
+      { "type": "LEVEL", "level": 37, "into": "Slowbro" },
+      { "type": "ITEM", "item": "KINGS_ROCK", "into": "Slowking" }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3694,11 +3778,13 @@
   {
     "id": 81,
     "name": "Magnemite",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 30,
-      "into": "Magneton"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 30,
+        "into": "Magneton"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3859,11 +3945,13 @@
   {
     "id": 84,
     "name": "Doduo",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 31,
-      "into": "Dodrio"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 31,
+        "into": "Dodrio"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -3985,11 +4073,13 @@
   {
     "id": 86,
     "name": "Seel",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 34,
-      "into": "Dewgong"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 34,
+        "into": "Dewgong"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -4095,11 +4185,13 @@
   {
     "id": 88,
     "name": "Grimer",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 38,
-      "into": "Muk"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 38,
+        "into": "Muk"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -4209,11 +4301,13 @@
   {
     "id": 90,
     "name": "Shellder",
-    "evolution": {
-      "type": "ITEM",
-      "item": "WATER_STONE",
-      "into": "Cloyster"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "WATER_STONE",
+        "into": "Cloyster"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -4291,11 +4385,13 @@
   {
     "id": 92,
     "name": "Gastly",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 25,
-      "into": "Haunter"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 25,
+        "into": "Haunter"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -4358,11 +4454,13 @@
   {
     "id": 93,
     "name": "Haunter",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 42,
-      "into": "Gengar"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 42,
+        "into": "Gengar"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -4452,11 +4550,13 @@
   {
     "id": 95,
     "name": "Onix",
-    "evolution": {
-      "type": "ITEM",
-      "item": "METAL_COAT",
-      "into": "Steelix"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "METAL_COAT",
+        "into": "Steelix"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -4507,11 +4607,13 @@
   {
     "id": 96,
     "name": "Drowzee",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 26,
-      "into": "Hypno"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 26,
+        "into": "Hypno"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -4613,11 +4715,13 @@
   {
     "id": 98,
     "name": "Krabby",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 28,
-      "into": "Kingler"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 28,
+        "into": "Kingler"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -4695,11 +4799,13 @@
   {
     "id": 100,
     "name": "Voltorb",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 30,
-      "into": "Electrode"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 30,
+        "into": "Electrode"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -4793,11 +4899,13 @@
   {
     "id": 102,
     "name": "Exeggcute",
-    "evolution": {
-      "type": "ITEM",
-      "item": "LEAF_STONE",
-      "into": "Exeggutor"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "LEAF_STONE",
+        "into": "Exeggutor"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -4879,11 +4987,13 @@
   {
     "id": 104,
     "name": "Cubone",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 28,
-      "into": "Marowak"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 28,
+        "into": "Marowak"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -5150,11 +5260,13 @@
   {
     "id": 109,
     "name": "Koffing",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 35,
-      "into": "Weezing"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 35,
+        "into": "Weezing"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -5256,11 +5368,13 @@
   {
     "id": 111,
     "name": "Rhyhorn",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 42,
-      "into": "Rhydon"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 42,
+        "into": "Rhydon"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -5334,11 +5448,13 @@
   {
     "id": 113,
     "name": "Chansey",
-    "evolution": {
-      "type": "HAPPINESS",
-      "condition": "TR_ANYTIME",
-      "into": "Blissey"
-    },
+    "evolution": [
+      {
+        "type": "HAPPINESS",
+        "condition": "TR_ANYTIME",
+        "into": "Blissey"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -5499,11 +5615,13 @@
   {
     "id": 116,
     "name": "Horsea",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 32,
-      "into": "Seadra"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 32,
+        "into": "Seadra"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -5546,11 +5664,13 @@
   {
     "id": 117,
     "name": "Seadra",
-    "evolution": {
-      "type": "ITEM",
-      "item": "DRAGON_SCALE",
-      "into": "Kingdra"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "DRAGON_SCALE",
+        "into": "Kingdra"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -5593,11 +5713,13 @@
   {
     "id": 118,
     "name": "Goldeen",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 33,
-      "into": "Seaking"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 33,
+        "into": "Seaking"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -5703,11 +5825,13 @@
   {
     "id": 120,
     "name": "Staryu",
-    "evolution": {
-      "type": "ITEM",
-      "item": "WATER_STONE",
-      "into": "Starmie"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "WATER_STONE",
+        "into": "Starmie"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -5840,11 +5964,13 @@
   {
     "id": 123,
     "name": "Scyther",
-    "evolution": {
-      "type": "ITEM",
-      "item": "METAL_COAT",
-      "into": "Scizor"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "METAL_COAT",
+        "into": "Scizor"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -6150,11 +6276,13 @@
   {
     "id": 129,
     "name": "Magikarp",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 20,
-      "into": "Gyarados"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 20,
+        "into": "Gyarados"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -6298,11 +6426,13 @@
   {
     "id": 133,
     "name": "Eevee",
-    "evolution": {
-      "type": "ITEM",
-      "item": "THUNDERSTONE",
-      "into": "Jolteon"
-    },
+    "evolution": [
+      { "type": "ITEM", "item": "THUNDER_STONE", "into": "Jolteon" },
+      { "type": "ITEM", "item": "WATER_STONE", "into": "Vaporeon" },
+      { "type": "ITEM", "item": "FIRE_STONE", "into": "Flareon" },
+      { "type": "FRIENDSHIP", "condition": "DAY", "into": "Espeon" },
+      { "type": "FRIENDSHIP", "condition": "NIGHT", "into": "Umbreon" }
+    ],
     "moves": [
       {
         "level": 1,
@@ -6514,11 +6644,13 @@
   {
     "id": 137,
     "name": "Porygon",
-    "evolution": {
-      "type": "ITEM",
-      "item": "UP_GRADE",
-      "into": "Porygon2"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "UP_GRADE",
+        "into": "Porygon2"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -6565,11 +6697,13 @@
   {
     "id": 138,
     "name": "Omanyte",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 40,
-      "into": "Omastar"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 40,
+        "into": "Omastar"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -6651,11 +6785,13 @@
   {
     "id": 140,
     "name": "Kabuto",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 40,
-      "into": "Kabutops"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 40,
+        "into": "Kabutops"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -6996,11 +7132,13 @@
   {
     "id": 147,
     "name": "Dratini",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 30,
-      "into": "Dragonair"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 30,
+        "into": "Dragonair"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -7051,11 +7189,13 @@
   {
     "id": 148,
     "name": "Dragonair",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 55,
-      "into": "Dragonite"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 55,
+        "into": "Dragonite"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -7283,11 +7423,13 @@
   {
     "id": 152,
     "name": "Chikorita",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 16,
-      "into": "Bayleef"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 16,
+        "into": "Bayleef"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -7342,11 +7484,13 @@
   {
     "id": 153,
     "name": "Bayleef",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 32,
-      "into": "Meganium"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 32,
+        "into": "Meganium"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -7464,11 +7608,13 @@
   {
     "id": 155,
     "name": "Cyndaquil",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 14,
-      "into": "Quilava"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 14,
+        "into": "Quilava"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -7519,11 +7665,13 @@
   {
     "id": 156,
     "name": "Quilava",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 36,
-      "into": "Typhlosion"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 36,
+        "into": "Typhlosion"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -7633,11 +7781,13 @@
   {
     "id": 158,
     "name": "Totodile",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 18,
-      "into": "Croconaw"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 18,
+        "into": "Croconaw"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -7692,11 +7842,13 @@
   {
     "id": 159,
     "name": "Croconaw",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 38,
-      "into": "Feraligatr"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 38,
+        "into": "Feraligatr"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -7814,11 +7966,13 @@
   {
     "id": 161,
     "name": "Sentret",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 15,
-      "into": "Furret"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 15,
+        "into": "Furret"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -7920,11 +8074,13 @@
   {
     "id": 163,
     "name": "Hoothoot",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 20,
-      "into": "Noctowl"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 20,
+        "into": "Noctowl"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8034,11 +8190,13 @@
   {
     "id": 165,
     "name": "Ledyba",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 18,
-      "into": "Ledian"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 18,
+        "into": "Ledian"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8140,11 +8298,13 @@
   {
     "id": 167,
     "name": "Spinarak",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 27,
-      "into": "Ariados"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 27,
+        "into": "Ariados"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8321,11 +8481,13 @@
   {
     "id": 170,
     "name": "Chinchou",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 27,
-      "into": "Lanturn"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 27,
+        "into": "Lanturn"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8391,11 +8553,13 @@
   {
     "id": 172,
     "name": "Pichu",
-    "evolution": {
-      "type": "HAPPINESS",
-      "condition": "TR_ANYTIME",
-      "into": "Pikachu"
-    },
+    "evolution": [
+      {
+        "type": "HAPPINESS",
+        "condition": "TR_ANYTIME",
+        "into": "Pikachu"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8422,11 +8586,13 @@
   {
     "id": 173,
     "name": "Cleffa",
-    "evolution": {
-      "type": "HAPPINESS",
-      "condition": "TR_ANYTIME",
-      "into": "Clefairy"
-    },
+    "evolution": [
+      {
+        "type": "HAPPINESS",
+        "condition": "TR_ANYTIME",
+        "into": "Clefairy"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8453,11 +8619,13 @@
   {
     "id": 174,
     "name": "Igglybuff",
-    "evolution": {
-      "type": "HAPPINESS",
-      "condition": "TR_ANYTIME",
-      "into": "Jigglypuff"
-    },
+    "evolution": [
+      {
+        "type": "HAPPINESS",
+        "condition": "TR_ANYTIME",
+        "into": "Jigglypuff"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8484,11 +8652,13 @@
   {
     "id": 175,
     "name": "Togepi",
-    "evolution": {
-      "type": "HAPPINESS",
-      "condition": "TR_ANYTIME",
-      "into": "Togetic"
-    },
+    "evolution": [
+      {
+        "type": "HAPPINESS",
+        "condition": "TR_ANYTIME",
+        "into": "Togetic"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8574,11 +8744,13 @@
   {
     "id": 177,
     "name": "Natu",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 25,
-      "into": "Xatu"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 25,
+        "into": "Xatu"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8676,11 +8848,13 @@
   {
     "id": 179,
     "name": "Mareep",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 15,
-      "into": "Flaaffy"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 15,
+        "into": "Flaaffy"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8731,11 +8905,13 @@
   {
     "id": 180,
     "name": "Flaaffy",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 30,
-      "into": "Ampharos"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 30,
+        "into": "Ampharos"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -8864,11 +9040,13 @@
   {
     "id": 183,
     "name": "Marill",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 18,
-      "into": "Azumarill"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 18,
+        "into": "Azumarill"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -9024,11 +9202,13 @@
   {
     "id": 187,
     "name": "Hoppip",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 18,
-      "into": "Skiploom"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 18,
+        "into": "Skiploom"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -9075,11 +9255,13 @@
   {
     "id": 188,
     "name": "Skiploom",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 27,
-      "into": "Jumpluff"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 27,
+        "into": "Jumpluff"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -9228,11 +9410,13 @@
   {
     "id": 191,
     "name": "Sunkern",
-    "evolution": {
-      "type": "ITEM",
-      "item": "SUN_STONE",
-      "into": "Sunflora"
-    },
+    "evolution": [
+      {
+        "type": "ITEM",
+        "item": "SUN_STONE",
+        "into": "Sunflora"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -9349,11 +9533,13 @@
   {
     "id": 194,
     "name": "Wooper",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 20,
-      "into": "Quagsire"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 20,
+        "into": "Quagsire"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -9787,11 +9973,13 @@
   {
     "id": 204,
     "name": "Pineco",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 31,
-      "into": "Forretress"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 31,
+        "into": "Forretress"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -10042,11 +10230,13 @@
   {
     "id": 209,
     "name": "Snubbull",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 23,
-      "into": "Granbull"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 23,
+        "into": "Granbull"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -10387,11 +10577,13 @@
   {
     "id": 216,
     "name": "Teddiursa",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 30,
-      "into": "Ursaring"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 30,
+        "into": "Ursaring"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -10509,11 +10701,13 @@
   {
     "id": 218,
     "name": "Slugma",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 28,
-      "into": "Magcargo"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 28,
+        "into": "Magcargo"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -10623,11 +10817,13 @@
   {
     "id": 220,
     "name": "Swinub",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 33,
-      "into": "Piloswine"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 33,
+        "into": "Piloswine"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -10780,11 +10976,13 @@
   {
     "id": 223,
     "name": "Remoraid",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 25,
-      "into": "Octillery"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 25,
+        "into": "Octillery"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -10971,11 +11169,13 @@
   {
     "id": 228,
     "name": "Houndour",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 24,
-      "into": "Houndoom"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 24,
+        "into": "Houndoom"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -11112,11 +11312,13 @@
   {
     "id": 231,
     "name": "Phanpy",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 25,
-      "into": "Donphan"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 25,
+        "into": "Donphan"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -11223,7 +11425,7 @@
     "id": 233,
     "name": "Porygon2",
     "evolution": null,
-     "moves": []
+    "moves": []
   },
   {
     "id": 234,
@@ -11282,11 +11484,11 @@
   {
     "id": 236,
     "name": "Tyrogue",
-    "evolution": {
-      "type": "STAT",
-      "level": 20,
-      "condition": "ATK_LT_DEF"
-    },
+    "evolution": [
+      { "type": "STAT", "level": 20, "condition": "ATK_LT_DEF", "into": "Hitmonchan" },
+      { "type": "STAT", "level": 20, "condition": "ATK_GT_DEF", "into": "Hitmonlee" },
+      { "type": "STAT", "level": 20, "condition": "ATK_EQ_DEF", "into": "Hitmontop" }
+    ],
     "moves": [
       {
         "level": 1,
@@ -11356,11 +11558,13 @@
   {
     "id": 238,
     "name": "Smoochum",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 26,
-      "into": "Jynx"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 26,
+        "into": "Jynx"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -11391,11 +11595,13 @@
   {
     "id": 239,
     "name": "Elekid",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 20,
-      "into": "Electabuzz"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 20,
+        "into": "Electabuzz"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -11430,11 +11636,13 @@
   {
     "id": 240,
     "name": "Magby",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 20,
-      "into": "Magmar"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 20,
+        "into": "Magmar"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -11696,11 +11904,13 @@
   {
     "id": 246,
     "name": "Larvitar",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 30,
-      "into": "Pupitar"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 30,
+        "into": "Pupitar"
+      }
+    ],
     "moves": [
       {
         "level": 1,
@@ -11751,11 +11961,13 @@
   {
     "id": 247,
     "name": "Pupitar",
-    "evolution": {
-      "type": "LEVEL",
-      "level": 55,
-      "into": "Tyranitar"
-    },
+    "evolution": [
+      {
+        "type": "LEVEL",
+        "level": 55,
+        "into": "Tyranitar"
+      }
+    ],
     "moves": [
       {
         "level": 1,
