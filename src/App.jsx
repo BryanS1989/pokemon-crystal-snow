@@ -32,15 +32,15 @@ export default function App() {
                 `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
               }
             >
-              Moves
+              Pokémon
             </NavLink>
             <NavLink
-              to="/pokemon"
+              to="/moves"
               className={({ isActive }) =>
                 `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
               }
             >
-              Pokémon
+              Moves
             </NavLink>
           </nav>
         </div>
@@ -49,10 +49,10 @@ export default function App() {
       <main className={styles.main}>
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<MovesSection />} />
-          <Route path="/moves/:id" element={<MoveDetailPage />} />
-          <Route path="/pokemon" element={<PokemonSection />} />
+          <Route path="/" element={<PokemonSection />} />
           <Route path="/pokemon/:id" element={<PokemonDetailPage />} />
+          <Route path="/moves" element={<MovesSection />} />
+          <Route path="/moves/:id" element={<MoveDetailPage />} />
         </Routes>
       </main>
 
