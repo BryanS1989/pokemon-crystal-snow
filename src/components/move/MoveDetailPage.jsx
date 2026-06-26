@@ -29,7 +29,10 @@ function buildEggLearners(moveName) {
 export default function MoveDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const move = movesData.find(m => m.id === Number(id))
+  const idx = movesData.findIndex(m => m.id === Number(id))
+  const move = idx !== -1 ? movesData[idx] : null
+  const prevMove = idx > 0 ? movesData[idx - 1] : null
+  const nextMove = idx < movesData.length - 1 ? movesData[idx + 1] : null
 
   if (!move) {
     return <p style={{ color: 'var(--text-muted)', padding: '32px' }}>Move not found.</p>
@@ -41,9 +44,21 @@ export default function MoveDetailPage() {
 
   return (
     <div className={styles.wrapper}>
-      <button className={styles.backBtn} onClick={() => navigate('/')}>
-        ← Back
-      </button>
+      <div className={styles.pageNav}>
+        <button className={styles.navBtn} onClick={() => navigate('/moves')}>← Back</button>
+        <div className={styles.prevNextBtns}>
+          {prevMove && (
+            <Link to={`/moves/${prevMove.id}`} className={styles.navBtn}>
+              ‹ {prevMove.name}
+            </Link>
+          )}
+          {nextMove && (
+            <Link to={`/moves/${nextMove.id}`} className={styles.navBtn}>
+              {nextMove.name} ›
+            </Link>
+          )}
+        </div>
+      </div>
 
       <div className={styles.columns}>
         {/* Left: move info card */}

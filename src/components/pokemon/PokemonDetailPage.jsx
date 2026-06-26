@@ -6,7 +6,10 @@ import PokemonDetail from './PokemonDetail'
 export default function PokemonDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const pokemon = pokemonData.find(p => p.id === Number(id))
+  const idx = pokemonData.findIndex(p => p.id === Number(id))
+  const pokemon = idx !== -1 ? pokemonData[idx] : null
+  const prevPokemon = idx > 0 ? pokemonData[idx - 1] : null
+  const nextPokemon = idx < pokemonData.length - 1 ? pokemonData[idx + 1] : null
 
   const [apiData, setApiData] = useState(null)
   const [apiLoading, setApiLoading] = useState(true)
@@ -29,7 +32,9 @@ export default function PokemonDetailPage() {
       pokemon={pokemon}
       apiData={apiData}
       apiLoading={apiLoading}
-      onBack={() => navigate(-1)}
+      onBack={() => navigate('/')}
+      prevPokemon={prevPokemon}
+      nextPokemon={nextPokemon}
     />
   )
 }

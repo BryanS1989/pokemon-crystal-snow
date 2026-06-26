@@ -95,7 +95,7 @@ function EvolutionInfo({ evolution }) {
   )
 }
 
-export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack }) {
+export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack, prevPokemon, nextPokemon }) {
   const paddedId = String(pokemon.id).padStart(3, '0')
   const eggMoves = eggMovesBySpecies[pokemon.name] || []
 
@@ -105,9 +105,21 @@ export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack }) 
 
   return (
     <div className={styles.wrapper}>
-      <button className={styles.backBtn} onClick={onBack}>
-        ← Back
-      </button>
+      <div className={styles.pageNav}>
+        <button className={styles.navBtn} onClick={onBack}>← Back</button>
+        <div className={styles.prevNextBtns}>
+          {prevPokemon && (
+            <Link to={`/pokemon/${prevPokemon.id}`} className={styles.navBtn}>
+              ‹ {prevPokemon.name}
+            </Link>
+          )}
+          {nextPokemon && (
+            <Link to={`/pokemon/${nextPokemon.id}`} className={styles.navBtn}>
+              {nextPokemon.name} ›
+            </Link>
+          )}
+        </div>
+      </div>
 
       <div className={styles.columns}>
         {/* Left column: artwork + info + evolution */}
