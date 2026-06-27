@@ -107,7 +107,7 @@ function EvolutionInfo({ evolution }) {
   )
 }
 
-export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack, prevPokemon, nextPokemon }) {
+export default function PokemonDetail({ pokemon, apiData, apiLoading, prevPokemon, nextPokemon }) {
   const paddedId = String(pokemon.id).padStart(3, '0')
   const eggMoves = eggMovesBySpecies[pokemon.name] || []
   const evolutionMove = evolutionMovesData[pokemon.name] ?? null
@@ -125,18 +125,26 @@ export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack, pr
   return (
     <div className={styles.wrapper}>
       <div className={styles.pageNav}>
-        <button className={styles.navBtn} onClick={onBack}>← Back</button>
+        <nav className={styles.breadcrumb}>
+          <Link to="/" className={styles.breadcrumbLink}>Pokédex</Link>
+          <span className={styles.breadcrumbSep}>›</span>
+          <span className={styles.breadcrumbCurrent}>{pokemon.name}</span>
+        </nav>
         <div className={styles.prevNextBtns}>
-          {prevPokemon && (
-            <Link to={`/pokemon/${prevPokemon.id}`} className={styles.navBtn}>
-              ‹ {prevPokemon.name}
-            </Link>
-          )}
-          {nextPokemon && (
-            <Link to={`/pokemon/${nextPokemon.id}`} className={styles.navBtn}>
-              {nextPokemon.name} ›
-            </Link>
-          )}
+          <div>
+            {prevPokemon && (
+              <Link to={`/pokemon/${prevPokemon.id}`} className={styles.navBtn}>
+                ‹ {prevPokemon.name}
+              </Link>
+            )}
+          </div>
+          <div>
+            {nextPokemon && (
+              <Link to={`/pokemon/${nextPokemon.id}`} className={styles.navBtn}>
+                {nextPokemon.name} ›
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 

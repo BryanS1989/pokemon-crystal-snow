@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import pokemonData from '../../data/pokemon.json'
 import PokemonDetail from './PokemonDetail'
 
 export default function PokemonDetailPage() {
   const { id } = useParams()
-  const navigate = useNavigate()
   const idx = pokemonData.findIndex(p => p.id === Number(id))
   const pokemon = idx !== -1 ? pokemonData[idx] : null
   const prevPokemon = idx > 0 ? pokemonData[idx - 1] : null
@@ -32,7 +31,6 @@ export default function PokemonDetailPage() {
       pokemon={pokemon}
       apiData={apiData}
       apiLoading={apiLoading}
-      onBack={() => navigate('/')}
       prevPokemon={prevPokemon}
       nextPokemon={nextPokemon}
     />

@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import tmsData from '../../data/tms.json'
 import movesData from '../../data/moves.json'
 import typesData from '../../data/move-types.json'
@@ -38,8 +38,6 @@ function buildEvoLearners(moveName) {
 
 export default function TMDetailPage() {
   const { id } = useParams()
-  const navigate = useNavigate()
-
   const idx = tmsData.findIndex(t => t.id === Number(id))
   const tm = idx !== -1 ? tmsData[idx] : null
   const prevTM = idx > 0 ? tmsData[idx - 1] : null
@@ -59,18 +57,26 @@ export default function TMDetailPage() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.pageNav}>
-        <button className={styles.navBtn} onClick={() => navigate('/tms')}>← TMs</button>
+        <nav className={styles.breadcrumb}>
+          <Link to="/tms" className={styles.breadcrumbLink}>TMs</Link>
+          <span className={styles.breadcrumbSep}>›</span>
+          <span className={styles.breadcrumbCurrent}>{tm.tm}</span>
+        </nav>
         <div className={styles.prevNextBtns}>
-          {prevTM && (
-            <Link to={`/tms/${prevTM.id}`} className={styles.navBtn}>
-              ‹ {prevTM.tm}
-            </Link>
-          )}
-          {nextTM && (
-            <Link to={`/tms/${nextTM.id}`} className={styles.navBtn}>
-              {nextTM.tm} ›
-            </Link>
-          )}
+          <div>
+            {prevTM && (
+              <Link to={`/tms/${prevTM.id}`} className={styles.navBtn}>
+                ‹ {prevTM.tm}
+              </Link>
+            )}
+          </div>
+          <div>
+            {nextTM && (
+              <Link to={`/tms/${nextTM.id}`} className={styles.navBtn}>
+                {nextTM.tm} ›
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 

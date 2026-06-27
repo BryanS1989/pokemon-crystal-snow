@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import movesData from '../../data/moves.json'
 import typesData from '../../data/move-types.json'
 import pokemonData from '../../data/pokemon.json'
@@ -38,7 +38,6 @@ function buildEvoLearners(moveName) {
 
 export default function MoveDetailPage() {
   const { id } = useParams()
-  const navigate = useNavigate()
   const idx = movesData.findIndex(m => m.id === Number(id))
   const move = idx !== -1 ? movesData[idx] : null
   const prevMove = idx > 0 ? movesData[idx - 1] : null
@@ -57,18 +56,26 @@ export default function MoveDetailPage() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.pageNav}>
-        <button className={styles.navBtn} onClick={() => navigate('/moves')}>← Back</button>
+        <nav className={styles.breadcrumb}>
+          <Link to="/moves" className={styles.breadcrumbLink}>Moves</Link>
+          <span className={styles.breadcrumbSep}>›</span>
+          <span className={styles.breadcrumbCurrent}>{move.name}</span>
+        </nav>
         <div className={styles.prevNextBtns}>
-          {prevMove && (
-            <Link to={`/moves/${prevMove.id}`} className={styles.navBtn}>
-              ‹ {prevMove.name}
-            </Link>
-          )}
-          {nextMove && (
-            <Link to={`/moves/${nextMove.id}`} className={styles.navBtn}>
-              {nextMove.name} ›
-            </Link>
-          )}
+          <div>
+            {prevMove && (
+              <Link to={`/moves/${prevMove.id}`} className={styles.navBtn}>
+                ‹ {prevMove.name}
+              </Link>
+            )}
+          </div>
+          <div>
+            {nextMove && (
+              <Link to={`/moves/${nextMove.id}`} className={styles.navBtn}>
+                {nextMove.name} ›
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 

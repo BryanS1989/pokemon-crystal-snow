@@ -6,14 +6,40 @@
 
 .pageNav {
   display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.breadcrumb {
+  display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 6px;
+  font-size: 0.82rem;
+}
+
+.breadcrumbLink {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumbLink:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbSep {
+  color: var(--text-muted);
+}
+
+.breadcrumbCurrent {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .prevNextBtns {
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navBtn {
