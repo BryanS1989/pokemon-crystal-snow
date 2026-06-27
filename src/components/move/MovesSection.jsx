@@ -177,10 +177,7 @@ export default function MovesSection() {
                 </div>
                 <div className={styles.toolbarLeft}>
                   <p className={styles.resultCount}>
-                    {sorted.length === 0
-                      ? 'No moves found'
-                      : `${sorted.length} move${sorted.length !== 1 ? 's' : ''}`
-                    }
+                    <strong>{sorted.length}</strong> / {movesData.length} moves
                   </p>
                   {activeFilterCount > 0 && (
                     <button

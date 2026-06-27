@@ -83,10 +83,7 @@ export default function TMsSection() {
 
               <div className={styles.toolbar}>
                 <p className={styles.resultCount}>
-                  {filtered.length === 0
-                    ? 'No TMs found'
-                    : `${filtered.length} TM${filtered.length !== 1 ? 's' : ''}`
-                  }
+                  <strong>{filtered.length}</strong> / {tmsData.length} TMs
                 </p>
                 {activeFilterCount > 0 && (
                   <button

@@ -109,6 +109,10 @@
   margin: 0;
 }
 
+.resultCount strong {
+  color: var(--accent);
+}
+
 .clearFiltersBtn {
   font-size: 0.72rem;
   padding: 3px 10px;
