@@ -34,7 +34,7 @@ export default function TMFilters({ filters, onFiltersChange, types, totalCount,
             role="switch"
             aria-checked={showStats}
             className={`${styles.toggleSwitch} ${showStats ? styles.toggleSwitchOn : ''}`}
-            onClick={() => onShowStatsChange(v => !v)}
+            onClick={() => onShowStatsChange(!showStats)}
           >
             <span className={styles.toggleThumb} />
           </button>

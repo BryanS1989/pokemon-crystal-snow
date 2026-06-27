@@ -26,6 +26,8 @@ function getPageNumbers(page, totalPages) {
 
 export default function PokemonSection() {
   const [filters, setFilters] = useState(INITIAL_FILTERS)
+  const [sortBy, setSortBy] = useState('id')
+  const [sortDir, setSortDir] = useState('asc')
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = Math.max(1, Number(searchParams.get('page') || '1'))
@@ -44,12 +46,37 @@ export default function PokemonSection() {
     })
   }, [filters])
 
+  const sorted = useMemo(() => {
+    const arr = [...filtered]
+    arr.sort((a, b) => {
+      const va = a[sortBy]
+      const vb = b[sortBy]
+      if (typeof va === 'string') return sortDir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va)
+      return sortDir === 'asc' ? va - vb : vb - va
+    })
+    return arr
+  }, [filtered, sortBy, sortDir])
+
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
-  const pageItems = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+  const pageItems = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
   const pageNumbers = getPageNumbers(page, totalPages)
 
   const hasActiveFilters = filters.name !== '' || filters.id !== ''
   const activeFilterCount = (filters.name ? 1 : 0) + (filters.id ? 1 : 0)
+
+  const toggleSort = (col) => {
+    if (sortBy === col) {
+      setSortDir(d => d === 'asc' ? 'desc' : 'asc')
+    } else {
+      setSortBy(col)
+      setSortDir('asc')
+    }
+  }
+
+  const sortIcon = (col) => {
+    if (sortBy !== col) return <span className={styles.sortNeutral}>↕</span>
+    return <span className={styles.sortActive}>{sortDir === 'asc' ? '↑' : '↓'}</span>
+  }
 
   function handleFiltersChange(next) {
     setFilters(next)
@@ -102,17 +129,36 @@ export default function PokemonSection() {
 
             {/* Toolbar resultado */}
             <div className={styles.toolbar}>
-              <p className={styles.resultCount}>
-                <strong>{filtered.length}</strong> / {pokemonData.length} Pokémon
-              </p>
-              {hasActiveFilters && (
-                <button
-                  className={styles.clearFiltersBtn}
-                  onClick={() => handleFiltersChange(INITIAL_FILTERS)}
-                >
-                  Clear filters
-                </button>
-              )}
+              <div className={styles.sort}>
+                <p className={styles.sortLabel}>Sort by:</p>
+                <div className={styles.sortBtns}>
+                  {[
+                    { key: 'id',   label: 'ID' },
+                    { key: 'name', label: 'Name' },
+                  ].map(({ key, label }) => (
+                    <button
+                      key={key}
+                      onClick={() => toggleSort(key)}
+                      className={`${styles.sortBtn} ${sortBy === key ? styles.sortBtnActive : ''}`}
+                    >
+                      {label} {sortIcon(key)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.toolbarLeft}>
+                <p className={styles.resultCount}>
+                  <strong>{filtered.length}</strong> / {pokemonData.length} Pokémon
+                </p>
+                {hasActiveFilters && (
+                  <button
+                    className={styles.clearFiltersBtn}
+                    onClick={() => handleFiltersChange(INITIAL_FILTERS)}
+                  >
+                    Clear filters
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 
