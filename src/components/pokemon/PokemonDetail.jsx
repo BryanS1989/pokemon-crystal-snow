@@ -196,12 +196,14 @@ export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack, pr
               )}
             </div>
 
-            {prevFormEntry && (
-              <div className={`${styles.evolutionGroup} ${styles.evolutionGroupFrom}`}>
-                <p className={styles.evolutionGroupLabel}>Evolves from</p>
+            <div className={`${styles.evolutionGroup} ${styles.evolutionGroupFrom}`}>
+              <p className={styles.evolutionGroupLabel}>Evolves from</p>
+              {prevFormEntry ? (
                 <EvolutionCard evolution={prevFormEntry.evo} pokemon={prevFormEntry.pokemon} />
-              </div>
-            )}
+              ) : (
+                <div className={styles.noEvolutionCard}>Base form</div>
+              )}
+            </div>
           </section>
         </div>
 
