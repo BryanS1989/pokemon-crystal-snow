@@ -58,6 +58,141 @@
   gap: 4px;
 }
 
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.hamburger:hover {
+  background: var(--stat-bg);
+}
+
+.hamburgerLine {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.hamburger[aria-expanded="true"] .hamburgerLine:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] .hamburgerLine:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger[aria-expanded="true"] .hamburgerLine:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.drawerBackdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 199;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.drawerBackdropOpen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.drawer {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  width: min(260px, 80vw);
+  flex-direction: column;
+  background: var(--header-bg);
+  border-left: 1px solid var(--card-border);
+  backdrop-filter: blur(12px);
+  z-index: 200;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 64px;
+  border-bottom: 1px solid var(--card-border);
+  flex-shrink: 0;
+}
+
+.drawerLogo {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.drawerClose {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.drawerClose:hover {
+  background: var(--stat-bg);
+  color: var(--text-primary);
+}
+
+.drawerNavLink {
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--card-border);
+  transition: background 0.15s, color 0.15s;
+}
+
+.drawerNavLink:hover {
+  color: var(--text-primary);
+  background: var(--stat-bg);
+}
+
+.drawerNavLinkActive {
+  color: var(--accent) !important;
+  background: var(--accent-subtle) !important;
+}
+
 .navLink {
   padding: 6px 14px;
   border-radius: 8px;
@@ -93,6 +228,24 @@
   gap: 24px;
 }
 
+@media (max-width: 640px) {
+  .nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .drawer {
+    display: flex;
+  }
+
+  .drawerBackdrop {
+    display: block;
+  }
+}
+
 @media (max-width: 540px) {
   .headerInner {
     padding: 0 16px;
@@ -105,15 +258,6 @@
 
   .pageTitle {
     font-size: 1.3rem;
-  }
-
-  .nav {
-    gap: 2px;
-  }
-
-  .navLink {
-    padding: 6px 10px;
-    font-size: 0.8rem;
   }
 }
 

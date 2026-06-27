@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import MovesSection from './components/move/MovesSection'
 import MoveDetailPage from './components/move/MoveDetailPage'
@@ -12,7 +12,24 @@ function ScrollToTop() {
   return null
 }
 
+const NAV_LINKS = [
+  { to: '/', label: 'Pokémon', end: true },
+  { to: '/moves', label: 'Moves' },
+]
+
 export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const { pathname } = useLocation()
+
+  useEffect(() => { setMenuOpen(false) }, [pathname])
+
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (e) => { if (e.key === 'Escape') setMenuOpen(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [menuOpen])
+
   return (
     <div className={styles.app}>
       <header className={styles.header}>
@@ -25,26 +42,64 @@ export default function App() {
             </div>
           </div>
           <nav className={styles.nav}>
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) =>
-                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
-              }
-            >
-              Pokémon
-            </NavLink>
-            <NavLink
-              to="/moves"
-              className={({ isActive }) =>
-                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
-              }
-            >
-              Moves
-            </NavLink>
+            {NAV_LINKS.map(({ to, label, end }) => (
+              <NavLink
+                key={to}
+                to={to}
+                end={end}
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
           </nav>
+          <button
+            className={styles.hamburger}
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label="Abrir menú"
+            aria-expanded={menuOpen}
+          >
+            <span className={styles.hamburgerLine} />
+            <span className={styles.hamburgerLine} />
+            <span className={styles.hamburgerLine} />
+          </button>
         </div>
       </header>
+
+      <div
+        className={`${styles.drawerBackdrop} ${menuOpen ? styles.drawerBackdropOpen : ''}`}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
+      <nav
+        className={`${styles.drawer} ${menuOpen ? styles.drawerOpen : ''}`}
+        aria-label="Navegación"
+      >
+        <div className={styles.drawerHeader}>
+          <span className={styles.drawerLogo}>❄️ Crystal Snow</span>
+          <button
+            className={styles.drawerClose}
+            onClick={() => setMenuOpen(false)}
+            aria-label="Cerrar menú"
+          >
+            ✕
+          </button>
+        </div>
+        {NAV_LINKS.map(({ to, label, end }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={end}
+            className={({ isActive }) =>
+              `${styles.drawerNavLink} ${isActive ? styles.drawerNavLinkActive : ''}`
+            }
+          >
+            {label}
+          </NavLink>
+        ))}
+      </nav>
 
       <main className={styles.main}>
         <ScrollToTop />
