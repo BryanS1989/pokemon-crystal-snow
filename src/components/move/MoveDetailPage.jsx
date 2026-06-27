@@ -3,6 +3,7 @@ import movesData from '../../data/moves.json'
 import typesData from '../../data/move-types.json'
 import pokemonData from '../../data/pokemon.json'
 import eggMovesData from '../../data/egg-moves.json'
+import evolutionMovesData from '../../data/evolution-moves.json'
 import styles from './MoveDetailPage.module.css'
 
 const typeMap = Object.fromEntries(typesData.map(t => [t.id, t]))
@@ -26,6 +27,13 @@ function buildEggLearners(moveName) {
     .filter(Boolean)
 }
 
+function buildEvoLearners(moveName) {
+  return Object.entries(evolutionMovesData)
+    .filter(([, move]) => move === moveName)
+    .map(([species]) => pokemonByName[species])
+    .filter(Boolean)
+}
+
 export default function MoveDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -41,6 +49,7 @@ export default function MoveDetailPage() {
   const type = typeMap[move.typeId]
   const learners = buildLearners(move.name)
   const eggLearners = buildEggLearners(move.name)
+  const evoLearners = buildEvoLearners(move.name)
 
   return (
     <div className={styles.wrapper}>
@@ -168,6 +177,39 @@ export default function MoveDetailPage() {
                     />
                     <span className={styles.learnerName}>{pokemon.name}</span>
                     <span className={styles.learnerEgg}>Egg</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {evoLearners.length > 0 && (
+            <section className={styles.learnersSection}>
+              <div className={styles.learnersHeader}>
+                <h3 className={styles.learnersTitle}>Learned on evolution</h3>
+                <span className={styles.learnersCount}>{evoLearners.length}</span>
+              </div>
+
+              <div className={styles.learnersGrid}>
+                {evoLearners.map(pokemon => (
+                  <Link
+                    key={pokemon.id}
+                    to={`/pokemon/${pokemon.id}`}
+                    className={styles.learnerRow}
+                  >
+                    <span className={styles.learnerId}>
+                      #{String(pokemon.id).padStart(3, '0')}
+                    </span>
+                    <img
+                      src={`${SPRITE_BASE}/${pokemon.id}.png`}
+                      alt={pokemon.name}
+                      width={48}
+                      height={48}
+                      className={styles.learnerSprite}
+                      loading="lazy"
+                    />
+                    <span className={styles.learnerName}>{pokemon.name}</span>
+                    <span className={styles.learnerEgg}>On evo</span>
                   </Link>
                 ))}
               </div>
