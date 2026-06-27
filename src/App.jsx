@@ -6,6 +6,7 @@ import PokemonSection from './components/pokemon/PokemonSection'
 import PokemonDetailPage from './components/pokemon/PokemonDetailPage'
 import TMsSection from './components/tm/TMsSection'
 import TMDetailPage from './components/tm/TMDetailPage'
+import FavoritesPage from './components/favorites/FavoritesPage'
 import styles from './App.module.css'
 
 function ScrollToTop() {
@@ -18,6 +19,7 @@ const NAV_LINKS = [
   { to: '/', label: 'Pokémon', end: true },
   { to: '/moves', label: 'Moves' },
   { to: '/tms', label: 'TMs' },
+  { to: '/favorites', label: 'Favorites' },
 ]
 
 export default function App() {
@@ -113,6 +115,7 @@ export default function App() {
           <Route path="/moves/:id" element={<MoveDetailPage />} />
           <Route path="/tms" element={<TMsSection />} />
           <Route path="/tms/:id" element={<TMDetailPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
         </Routes>
       </main>
 

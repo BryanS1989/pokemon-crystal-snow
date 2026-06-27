@@ -55,8 +55,16 @@ export function FavoritesProvider({ children }) {
     return favorites[type].has(id)
   }, [favorites])
 
+  const clearFavorites = useCallback((type) => {
+    setFavorites(prev => {
+      const next = { ...prev, [type]: new Set() }
+      saveToStorage(next)
+      return next
+    })
+  }, [])
+
   return (
-    <FavoritesContext.Provider value={{ toggleFavorite, isFavorite }}>
+    <FavoritesContext.Provider value={{ toggleFavorite, isFavorite, clearFavorites }}>
       {children}
     </FavoritesContext.Provider>
   )
