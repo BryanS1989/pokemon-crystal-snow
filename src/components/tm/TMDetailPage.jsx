@@ -1,15 +1,15 @@
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import tmsData from '../../data/tms.json'
 import movesData from '../../data/moves.json'
 import typesData from '../../data/move-types.json'
 import pokemonData from '../../data/pokemon.json'
 import eggMovesData from '../../data/egg-moves.json'
 import evolutionMovesData from '../../data/evolution-moves.json'
-import tmsData from '../../data/tms.json'
-import styles from './MoveDetailPage.module.css'
+import styles from './TMDetailPage.module.css'
 
+const moveMap = Object.fromEntries(movesData.map(m => [m.name, m]))
 const typeMap = Object.fromEntries(typesData.map(t => [t.id, t]))
 const pokemonByName = Object.fromEntries(pokemonData.map(p => [p.name, p]))
-const tmByMove = Object.fromEntries(tmsData.map(t => [t.move, t]))
 
 const SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
 
@@ -36,109 +36,131 @@ function buildEvoLearners(moveName) {
     .filter(Boolean)
 }
 
-export default function MoveDetailPage() {
+export default function TMDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const idx = movesData.findIndex(m => m.id === Number(id))
-  const move = idx !== -1 ? movesData[idx] : null
-  const prevMove = idx > 0 ? movesData[idx - 1] : null
-  const nextMove = idx < movesData.length - 1 ? movesData[idx + 1] : null
 
-  if (!move) {
-    return <p style={{ color: 'var(--text-muted)', padding: '32px' }}>Move not found.</p>
+  const idx = tmsData.findIndex(t => t.id === Number(id))
+  const tm = idx !== -1 ? tmsData[idx] : null
+  const prevTM = idx > 0 ? tmsData[idx - 1] : null
+  const nextTM = idx < tmsData.length - 1 ? tmsData[idx + 1] : null
+
+  if (!tm) {
+    return <p style={{ color: 'var(--text-muted)', padding: '32px' }}>TM not found.</p>
   }
 
-  const type = typeMap[move.typeId]
-  const tmEntry = tmByMove[move.name] ?? null
-  const learners = buildLearners(move.name)
-  const eggLearners = buildEggLearners(move.name)
-  const evoLearners = buildEvoLearners(move.name)
+  const move = moveMap[tm.move] ?? null
+  const type = move ? typeMap[move.typeId] : null
+
+  const learners = move ? buildLearners(move.name) : []
+  const eggLearners = move ? buildEggLearners(move.name) : []
+  const evoLearners = move ? buildEvoLearners(move.name) : []
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.pageNav}>
-        <button className={styles.navBtn} onClick={() => navigate('/moves')}>← Back</button>
+        <button className={styles.navBtn} onClick={() => navigate('/tms')}>← TMs</button>
         <div className={styles.prevNextBtns}>
-          {prevMove && (
-            <Link to={`/moves/${prevMove.id}`} className={styles.navBtn}>
-              ‹ {prevMove.name}
+          {prevTM && (
+            <Link to={`/tms/${prevTM.id}`} className={styles.navBtn}>
+              ‹ {prevTM.tm}
             </Link>
           )}
-          {nextMove && (
-            <Link to={`/moves/${nextMove.id}`} className={styles.navBtn}>
-              {nextMove.name} ›
+          {nextTM && (
+            <Link to={`/tms/${nextTM.id}`} className={styles.navBtn}>
+              {nextTM.tm} ›
             </Link>
           )}
         </div>
       </div>
 
       <div className={styles.columns}>
-        {/* Left: move info card */}
+        {/* Left: TM info */}
         <div className={styles.leftCol}>
-          <div className={styles.moveCard}>
-            <div className={styles.moveHeader}>
-              <h2 className={styles.moveName}>{move.name}</h2>
-              <span
-                className={styles.typeBadge}
-                style={{ backgroundColor: type.color, color: type.textColor }}
-              >
-                {type.name}
-              </span>
-            </div>
-
-            <div className={styles.stats}>
-              <div className={styles.stat}>
-                <span className={styles.statLabel}>Power</span>
-                <span className={styles.statValue}>
-                  {move.power === '★'
-                    ? <span title="One-hit KO or damage based on level/HP" style={{ cursor: 'help' }}>★</span>
-                    : move.power !== null ? move.power : '—'
-                  }
-                </span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statLabel}>Accuracy</span>
-                <span className={styles.statValue}>{move.accuracy}%</span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statLabel}>PP</span>
-                <span className={styles.statValue}>{move.pp}</span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statLabel}>Effect%</span>
-                <span className={styles.statValue}>
-                  {move.effect !== null ? `${move.effect}%` : '—'}
-                </span>
-              </div>
-            </div>
-
-            <p className={styles.description}>{move.description}</p>
+          <div className={styles.tmTitleRow}>
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/tm-normal.png"
+              alt="TM"
+              width={48}
+              height={48}
+              className={styles.tmSprite}
+            />
+            <h2 className={styles.tmTitle}>{tm.tm}</h2>
           </div>
 
-          {tmEntry && (
-            <Link to={`/tms/${tmEntry.id}`} className={styles.tmBlock}>
-              <div className={styles.tmBlockHeader}>
-                <span className={styles.tmBlockIcon}>⚙</span>
-                <span className={styles.tmBlockLabel}>Máquina Técnica</span>
-              </div>
-              <div className={styles.tmBlockBody}>
-                <img
-                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/tm-normal.png"
-                  alt="TM"
-                  width={32}
-                  height={32}
-                  className={styles.tmBlockSprite}
-                />
-                <div className={styles.tmBlockInfo}>
-                  <span className={styles.tmBlockNumber}>{tmEntry.tm}</span>
-                  <span className={styles.tmBlockLocation}>{tmEntry.location}</span>
+          {tm.inCrystal ? (
+            <div className={styles.bannerInfo}>
+              <span className={styles.bannerIcon}>✓</span>
+              Also a TM in vanilla Pokémon Crystal
+            </div>
+          ) : (
+            <div className={styles.bannerWarning}>
+              <span className={styles.bannerIcon}>★</span>
+              New or reassigned in Crystal Snow
+            </div>
+          )}
+
+          <section>
+            <h3 className={styles.sectionLabel}>Move</h3>
+            {move ? (
+              <Link to={`/moves/${move.id}`} className={styles.moveCard}>
+                <div className={styles.moveHeader}>
+                  <h4 className={styles.moveName}>{tm.move}</h4>
+                  {type && (
+                    <span
+                      className={styles.typeBadge}
+                      style={{ backgroundColor: type.color, color: type.textColor }}
+                    >
+                      {type.name}
+                    </span>
+                  )}
+                </div>
+                <div className={styles.stats}>
+                  <div className={styles.stat}>
+                    <span className={styles.statLabel}>Power</span>
+                    <span className={styles.statValue}>
+                      {move.power === '★'
+                        ? <span title="One-hit KO or damage based on level/HP" style={{ cursor: 'help' }}>★</span>
+                        : move.power !== null ? move.power : '—'
+                      }
+                    </span>
+                  </div>
+                  <div className={styles.stat}>
+                    <span className={styles.statLabel}>Accuracy</span>
+                    <span className={styles.statValue}>{move.accuracy}%</span>
+                  </div>
+                  <div className={styles.stat}>
+                    <span className={styles.statLabel}>PP</span>
+                    <span className={styles.statValue}>{move.pp}</span>
+                  </div>
+                  <div className={styles.stat}>
+                    <span className={styles.statLabel}>Effect%</span>
+                    <span className={styles.statValue}>
+                      {move.effect !== null ? `${move.effect}%` : '—'}
+                    </span>
+                  </div>
+                </div>
+                <p className={styles.description}>{move.description}</p>
+              </Link>
+            ) : (
+              <div className={styles.moveCard}>
+                <div className={styles.moveHeader}>
+                  <h4 className={styles.moveName}>{tm.move}</h4>
                 </div>
               </div>
-            </Link>
-          )}
+            )}
+          </section>
+
+          <section className={styles.locationSection}>
+            <h3 className={styles.sectionLabel}>Location</h3>
+            <div className={styles.locationCard}>
+              <span className={styles.locationIcon}>📍</span>
+              <span className={styles.locationText}>{tm.location}</span>
+            </div>
+          </section>
         </div>
 
-        {/* Right: learners */}
+        {/* Right: Pokémon learners */}
         <div className={styles.rightCol}>
           <section className={styles.learnersSection}>
             <div className={styles.learnersHeader}>
@@ -147,7 +169,7 @@ export default function MoveDetailPage() {
             </div>
 
             {learners.length === 0 ? (
-              <p className={styles.noLearners}>No Pokémon in the Pokédex learn this move.</p>
+              <p className={styles.noLearners}>No Pokémon in the Pokédex learn this move by level-up.</p>
             ) : (
               <div className={styles.learnersGrid}>
                 {learners.map(({ pokemon, level }) => (
@@ -181,7 +203,6 @@ export default function MoveDetailPage() {
                 <h3 className={styles.learnersTitle}>Egg move</h3>
                 <span className={styles.learnersCount}>{eggLearners.length}</span>
               </div>
-
               <div className={styles.learnersGrid}>
                 {eggLearners.map(pokemon => (
                   <Link
@@ -214,7 +235,6 @@ export default function MoveDetailPage() {
                 <h3 className={styles.learnersTitle}>Learned on evolution</h3>
                 <span className={styles.learnersCount}>{evoLearners.length}</span>
               </div>
-
               <div className={styles.learnersGrid}>
                 {evoLearners.map(pokemon => (
                   <Link

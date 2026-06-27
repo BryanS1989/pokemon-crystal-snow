@@ -4,25 +4,6 @@
   gap: 24px;
 }
 
-.columns {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 32px;
-  align-items: start;
-}
-
-.leftCol {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.rightCol {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
 .pageNav {
   display: flex;
   align-items: center;
@@ -56,26 +37,127 @@
   background: var(--accent-subtle);
 }
 
+/* Layout: TM info top (primary), learners below (secondary) */
+
+.columns {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.leftCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* Title and banner span both columns */
+.leftCol > .tmTitleRow,
+.leftCol > .bannerInfo,
+.leftCol > .bannerWarning {
+  grid-column: 1 / -1;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* TM title */
+
+.tmTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tmSprite {
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+.tmTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Banners */
+
+.bannerInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #d1fae5;
+  border: 1px solid #6ee7b7;
+  color: #065f46;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.bannerWarning {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #92400e;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.bannerIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Section label */
+
+.sectionLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+}
+
 /* Move card */
 
 .moveCard {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 16px;
-  padding: 24px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.moveCard:is(a):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow);
+  border-color: var(--accent);
 }
 
 .moveHeader {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .moveName {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--text-primary);
   margin: 0;
@@ -83,13 +165,14 @@
 }
 
 .typeBadge {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  padding: 4px 14px;
+  padding: 4px 12px;
   border-radius: 20px;
   white-space: nowrap;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
 .stats {
@@ -129,71 +212,34 @@
   margin: 0;
 }
 
-/* TM block */
+/* Location */
 
-.tmBlock {
+.locationSection {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 14px 16px;
+}
+
+.locationCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  text-decoration: none;
-  transition: border-color 0.15s, background 0.15s;
+  padding: 16px;
+  flex: 1;
 }
 
-.tmBlock:hover {
-  border-color: var(--accent);
-  background: var(--accent-subtle);
-}
-
-.tmBlockHeader {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.tmBlockIcon {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.tmBlockLabel {
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.tmBlockBody {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.tmBlockSprite {
-  image-rendering: pixelated;
+.locationIcon {
+  font-size: 1.1rem;
   flex-shrink: 0;
+  margin-top: 1px;
 }
 
-.tmBlockInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.tmBlockNumber {
+.locationText {
   font-size: 0.95rem;
-  font-weight: 700;
   color: var(--text-primary);
-}
-
-.tmBlockLocation {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 /* Learners */
@@ -299,7 +345,7 @@
 }
 
 @media (max-width: 700px) {
-  .columns {
+  .leftCol {
     grid-template-columns: 1fr;
   }
 }
