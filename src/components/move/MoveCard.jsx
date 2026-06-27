@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './MoveCard.module.css'
+import FavoriteButton from '../shared/FavoriteButton'
 
 export default function MoveCard({ move, type }) {
   return (
@@ -12,6 +13,7 @@ export default function MoveCard({ move, type }) {
         >
           {type.name}
         </span>
+        <FavoriteButton type="move" id={move.id} className={styles.favBtn} />
       </div>
 
       <div className={styles.stats}>

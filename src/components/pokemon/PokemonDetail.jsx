@@ -8,6 +8,7 @@ import moveTypes from '../../data/move-types.json'
 import eggMovesData from '../../data/egg-moves.json'
 import evolutionMovesData from '../../data/evolution-moves.json'
 import styles from './PokemonDetail.module.css'
+import FavoriteButton from '../shared/FavoriteButton'
 
 const typeByName = Object.fromEntries(moveTypes.map(t => [t.name.toLowerCase(), t]))
 const typeById = Object.fromEntries(moveTypes.map(t => [t.id, t]))
@@ -129,6 +130,7 @@ export default function PokemonDetail({ pokemon, apiData, apiLoading, prevPokemo
           <Link to="/" className={styles.breadcrumbLink}>Pokédex</Link>
           <span className={styles.breadcrumbSep}>›</span>
           <span className={styles.breadcrumbCurrent}>{pokemon.name}</span>
+          <FavoriteButton type="pokemon" id={pokemon.id} className={styles.favBtnDetail} />
         </nav>
         <div className={styles.prevNextBtns}>
           <div>

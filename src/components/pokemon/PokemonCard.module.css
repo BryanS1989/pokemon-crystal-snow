@@ -27,12 +27,38 @@
   image-rendering: pixelated;
 }
 
+.idRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 .id {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-muted);
   letter-spacing: 0.06em;
   font-variant-numeric: tabular-nums;
+}
+
+.favBtn {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.card:hover .favBtn {
+  opacity: 1;
+}
+
+.favBtn[data-active] {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .favBtn {
+    opacity: 1;
+  }
 }
 
 .name {

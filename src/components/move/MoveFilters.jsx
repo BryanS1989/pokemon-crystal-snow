@@ -6,7 +6,7 @@ const ACCURACY_RANGE = [40, 100]
 const PP_RANGE      = [1, 40]
 const EFFECT_RANGE  = [10, 100]
 
-export default function MoveFilters({ filters, onFiltersChange, types, totalCount, filteredCount }) {
+export default function MoveFilters({ filters, onFiltersChange, types, totalCount, filteredCount, onlyFavorites, onOnlyFavoritesChange }) {
   const set = (key, value) => onFiltersChange({ ...filters, [key]: value })
 
   const toggleType = (typeId) => {
@@ -28,6 +28,7 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
       includeStarPower: true,
       includeNoEffect: true,
     })
+    onOnlyFavoritesChange(false)
   }
 
   const hasActiveFilters =
@@ -43,7 +44,8 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
     filters.effectRange[1] !== EFFECT_RANGE[1] ||
     !filters.includePowerless ||
     !filters.includeStarPower ||
-    !filters.includeNoEffect
+    !filters.includeNoEffect ||
+    onlyFavorites
 
   return (
     <aside className={styles.sidebar}>
@@ -59,6 +61,20 @@ export default function MoveFilters({ filters, onFiltersChange, types, totalCoun
       <p className={styles.count}>
         <strong>{filteredCount}</strong> / {totalCount} moves
       </p>
+
+      <section className={styles.section}>
+        <label className={styles.toggle}>
+          <span className={styles.toggleLabel}>Only Favorites</span>
+          <button
+            role="switch"
+            aria-checked={onlyFavorites}
+            className={`${styles.toggleSwitch} ${onlyFavorites ? styles.toggleSwitchOn : ''}`}
+            onClick={() => onOnlyFavoritesChange(!onlyFavorites)}
+          >
+            <span className={styles.toggleThumb} />
+          </button>
+        </label>
+      </section>
 
       <section className={styles.section}>
         <label className={styles.sectionLabel}>Search</label>

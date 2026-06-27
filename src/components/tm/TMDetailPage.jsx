@@ -6,6 +6,7 @@ import pokemonData from '../../data/pokemon.json'
 import eggMovesData from '../../data/egg-moves.json'
 import evolutionMovesData from '../../data/evolution-moves.json'
 import styles from './TMDetailPage.module.css'
+import FavoriteButton from '../shared/FavoriteButton'
 
 const moveMap = Object.fromEntries(movesData.map(m => [m.name, m]))
 const typeMap = Object.fromEntries(typesData.map(t => [t.id, t]))
@@ -61,6 +62,7 @@ export default function TMDetailPage() {
           <Link to="/tms" className={styles.breadcrumbLink}>TMs</Link>
           <span className={styles.breadcrumbSep}>›</span>
           <span className={styles.breadcrumbCurrent}>{tm.tm}</span>
+          <FavoriteButton type="tm" id={tm.id} className={styles.favBtnDetail} />
         </nav>
         <div className={styles.prevNextBtns}>
           <div>

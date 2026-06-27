@@ -156,6 +156,14 @@
   background: var(--accent);
 }
 
+.toggleSwitchFav {
+  background: #f59e0b;
+}
+
+.toggleSwitchFav .toggleThumb {
+  transform: translateX(16px);
+}
+
 .toggleThumb {
   position: absolute;
   top: 3px;

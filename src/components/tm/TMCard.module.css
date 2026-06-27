@@ -34,6 +34,26 @@
   letter-spacing: -0.01em;
 }
 
+.favBtn {
+  margin-left: auto;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.card:hover .favBtn {
+  opacity: 1;
+}
+
+.favBtn[data-active] {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .favBtn {
+    opacity: 1;
+  }
+}
+
 .body {
   display: flex;
   align-items: center;

@@ -1,6 +1,6 @@
 import styles from './TMFilters.module.css'
 
-export default function TMFilters({ filters, onFiltersChange, types, totalCount, filteredCount, showStats, onShowStatsChange }) {
+export default function TMFilters({ filters, onFiltersChange, types, totalCount, filteredCount, showStats, onShowStatsChange, onlyFavorites, onOnlyFavoritesChange }) {
   const set = (key, value) => onFiltersChange({ ...filters, [key]: value })
 
   const toggleType = (typeId) => {
@@ -10,9 +10,9 @@ export default function TMFilters({ filters, onFiltersChange, types, totalCount,
     set('selectedTypes', next)
   }
 
-  const hasActiveFilters = filters.search !== '' || filters.selectedTypes.length > 0
+  const hasActiveFilters = filters.search !== '' || filters.selectedTypes.length > 0 || onlyFavorites
 
-  const clearAll = () => onFiltersChange({ search: '', selectedTypes: [] })
+  const clearAll = () => { onFiltersChange({ search: '', selectedTypes: [] }); onOnlyFavoritesChange(false) }
 
   return (
     <aside className={styles.sidebar}>
@@ -26,6 +26,20 @@ export default function TMFilters({ filters, onFiltersChange, types, totalCount,
       <p className={styles.count}>
         <strong>{filteredCount}</strong> / {totalCount} TMs
       </p>
+
+      <section className={styles.section}>
+        <label className={styles.toggle}>
+          <span className={styles.toggleLabel}>Only Favorites</span>
+          <button
+            role="switch"
+            aria-checked={onlyFavorites}
+            className={`${styles.toggleSwitch} ${onlyFavorites ? styles.toggleSwitchFav : ''}`}
+            onClick={() => onOnlyFavoritesChange(!onlyFavorites)}
+          >
+            <span className={styles.toggleThumb} />
+          </button>
+        </label>
+      </section>
 
       <section className={styles.section}>
         <label className={styles.toggle}>

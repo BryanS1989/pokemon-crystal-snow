@@ -4,6 +4,7 @@ import pokemonData from '../../data/pokemon.json'
 import PokemonCard from './PokemonCard'
 import PokemonFilters from './PokemonFilters'
 import styles from './PokemonSection.module.css'
+import { useFavorites } from '../../contexts/FavoritesContext'
 
 const PAGE_SIZE = 20
 const INITIAL_FILTERS = { name: '', id: '' }
@@ -29,8 +30,10 @@ export default function PokemonSection() {
   const [sortBy, setSortBy] = useState('id')
   const [sortDir, setSortDir] = useState('asc')
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const [onlyFavorites, setOnlyFavorites] = useState(false)
   const [searchParams, setSearchParams] = useSearchParams()
   const page = Math.max(1, Number(searchParams.get('page') || '1'))
+  const { isFavorite } = useFavorites()
 
   function setPage(p) {
     setSearchParams({ page: String(p) }, { replace: true })
@@ -46,8 +49,13 @@ export default function PokemonSection() {
     })
   }, [filters])
 
+  const finalFiltered = useMemo(() => {
+    if (!onlyFavorites) return filtered
+    return filtered.filter(p => isFavorite('pokemon', p.id))
+  }, [filtered, onlyFavorites, isFavorite])
+
   const sorted = useMemo(() => {
-    const arr = [...filtered]
+    const arr = [...finalFiltered]
     arr.sort((a, b) => {
       const va = a[sortBy]
       const vb = b[sortBy]
@@ -55,14 +63,14 @@ export default function PokemonSection() {
       return sortDir === 'asc' ? va - vb : vb - va
     })
     return arr
-  }, [filtered, sortBy, sortDir])
+  }, [finalFiltered, sortBy, sortDir])
 
-  const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
+  const totalPages = Math.ceil(finalFiltered.length / PAGE_SIZE)
   const pageItems = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
   const pageNumbers = getPageNumbers(page, totalPages)
 
-  const hasActiveFilters = filters.name !== '' || filters.id !== ''
-  const activeFilterCount = (filters.name ? 1 : 0) + (filters.id ? 1 : 0)
+  const hasActiveFilters = filters.name !== '' || filters.id !== '' || onlyFavorites
+  const activeFilterCount = (filters.name ? 1 : 0) + (filters.id ? 1 : 0) + (onlyFavorites ? 1 : 0)
 
   const toggleSort = (col) => {
     if (sortBy === col) {
@@ -108,7 +116,9 @@ export default function PokemonSection() {
             filters={filters}
             onFiltersChange={handleFiltersChange}
             totalCount={pokemonData.length}
-            filteredCount={filtered.length}
+            filteredCount={finalFiltered.length}
+            onlyFavorites={onlyFavorites}
+            onOnlyFavoritesChange={setOnlyFavorites}
           />
         </div>
 
@@ -148,12 +158,12 @@ export default function PokemonSection() {
               </div>
               <div className={styles.toolbarLeft}>
                 <p className={styles.resultCount}>
-                  <strong>{filtered.length}</strong> / {pokemonData.length} Pokémon
+                  <strong>{finalFiltered.length}</strong> / {pokemonData.length} Pokémon
                 </p>
                 {hasActiveFilters && (
                   <button
                     className={styles.clearFiltersBtn}
-                    onClick={() => handleFiltersChange(INITIAL_FILTERS)}
+                    onClick={() => { handleFiltersChange(INITIAL_FILTERS); setOnlyFavorites(false) }}
                   >
                     Clear filters
                   </button>
@@ -162,9 +172,9 @@ export default function PokemonSection() {
             </div>
           </div>
 
-          {filtered.length === 0 ? (
+          {finalFiltered.length === 0 ? (
             <div className={styles.empty}>
-              <span className={styles.emptyIcon}>🔍</span>
+              <span className={styles.emptyIcon}>❄️</span>
               <p>No Pokémon match your filters.</p>
             </div>
           ) : (

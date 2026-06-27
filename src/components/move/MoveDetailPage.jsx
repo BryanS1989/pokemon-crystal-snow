@@ -6,6 +6,7 @@ import eggMovesData from '../../data/egg-moves.json'
 import evolutionMovesData from '../../data/evolution-moves.json'
 import tmsData from '../../data/tms.json'
 import styles from './MoveDetailPage.module.css'
+import FavoriteButton from '../shared/FavoriteButton'
 
 const typeMap = Object.fromEntries(typesData.map(t => [t.id, t]))
 const pokemonByName = Object.fromEntries(pokemonData.map(p => [p.name, p]))
@@ -60,6 +61,7 @@ export default function MoveDetailPage() {
           <Link to="/moves" className={styles.breadcrumbLink}>Moves</Link>
           <span className={styles.breadcrumbSep}>›</span>
           <span className={styles.breadcrumbCurrent}>{move.name}</span>
+          <FavoriteButton type="move" id={move.id} className={styles.favBtnDetail} />
         </nav>
         <div className={styles.prevNextBtns}>
           <div>

@@ -4,6 +4,7 @@ import typesData from '../../data/move-types.json'
 import MoveCard from './MoveCard'
 import MoveFilters from './MoveFilters'
 import styles from './MovesSection.module.css'
+import { useFavorites } from '../../contexts/FavoritesContext'
 
 const typeMap = Object.fromEntries(typesData.map(t => [t.id, t]))
 
@@ -78,12 +79,20 @@ export default function MovesSection() {
   const [sortBy, setSortBy] = useState('name')
   const [sortDir, setSortDir] = useState('asc')
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const [onlyFavorites, setOnlyFavorites] = useState(false)
+  const { isFavorite } = useFavorites()
 
   const filtered = useMemo(() => applyFilters(movesData, filters), [filters])
-  const activeFilterCount = useMemo(() => countActiveFilters(filters), [filters])
+
+  const finalFiltered = useMemo(() => {
+    if (!onlyFavorites) return filtered
+    return filtered.filter(m => isFavorite('move', m.id))
+  }, [filtered, onlyFavorites, isFavorite])
+
+  const activeFilterCount = useMemo(() => countActiveFilters(filters) + (onlyFavorites ? 1 : 0), [filters, onlyFavorites])
 
   const sorted = useMemo(() => {
-    const arr = [...filtered]
+    const arr = [...finalFiltered]
     arr.sort((a, b) => {
       let va = a[sortBy]
       let vb = b[sortBy]
@@ -93,7 +102,7 @@ export default function MovesSection() {
       return sortDir === 'asc' ? va - vb : vb - va
     })
     return arr
-  }, [filtered, sortBy, sortDir])
+  }, [finalFiltered, sortBy, sortDir])
 
   const toggleSort = (col) => {
     if (sortBy === col) {
@@ -136,8 +145,10 @@ export default function MovesSection() {
               onFiltersChange={setFilters}
               types={typesData}
               totalCount={movesData.length}
-              filteredCount={filtered.length}
+              filteredCount={finalFiltered.length}
               onClose={() => setFiltersOpen(false)}
+              onlyFavorites={onlyFavorites}
+              onOnlyFavoritesChange={setOnlyFavorites}
             />
           </div>
 
@@ -182,7 +193,7 @@ export default function MovesSection() {
                   {activeFilterCount > 0 && (
                     <button
                       className={styles.clearFiltersBtn}
-                      onClick={() => setFilters(INITIAL_FILTERS)}
+                      onClick={() => { setFilters(INITIAL_FILTERS); setOnlyFavorites(false) }}
                     >
                       Clear filters
                     </button>

@@ -5,6 +5,7 @@ import typesData from '../../data/move-types.json'
 import TMCard from './TMCard'
 import TMFilters from './TMFilters'
 import styles from './TMsSection.module.css'
+import { useFavorites } from '../../contexts/FavoritesContext'
 
 const moveMap = Object.fromEntries(movesData.map(m => [m.name, m]))
 const typeMap = Object.fromEntries(typesData.map(t => [t.id, t]))
@@ -25,6 +26,8 @@ export default function TMsSection() {
   const [sortDir, setSortDir] = useState('asc')
   const [showStats, setShowStats] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const [onlyFavorites, setOnlyFavorites] = useState(false)
+  const { isFavorite } = useFavorites()
 
   const filtered = useMemo(() => {
     const q = filters.search.trim().toLowerCase()
@@ -38,8 +41,13 @@ export default function TMsSection() {
     })
   }, [filters])
 
+  const finalFiltered = useMemo(() => {
+    if (!onlyFavorites) return filtered
+    return filtered.filter(t => isFavorite('tm', t.id))
+  }, [filtered, onlyFavorites, isFavorite])
+
   const sorted = useMemo(() => {
-    const arr = [...filtered]
+    const arr = [...finalFiltered]
     arr.sort((a, b) => {
       let va, vb
       if (sortBy === 'type') {
@@ -62,9 +70,9 @@ export default function TMsSection() {
       return sortDir === 'asc' ? va - vb : vb - va
     })
     return arr
-  }, [filtered, sortBy, sortDir])
+  }, [finalFiltered, sortBy, sortDir])
 
-  const activeFilterCount = useMemo(() => countActiveFilters(filters), [filters])
+  const activeFilterCount = useMemo(() => countActiveFilters(filters) + (onlyFavorites ? 1 : 0), [filters, onlyFavorites])
 
   const toggleSort = (col) => {
     if (sortBy === col) {
@@ -125,9 +133,11 @@ export default function TMsSection() {
               onFiltersChange={setFilters}
               types={typesData}
               totalCount={tmsData.length}
-              filteredCount={filtered.length}
+              filteredCount={finalFiltered.length}
               showStats={showStats}
               onShowStatsChange={handleShowStatsChange}
+              onlyFavorites={onlyFavorites}
+              onOnlyFavoritesChange={setOnlyFavorites}
             />
           </div>
 
@@ -161,12 +171,12 @@ export default function TMsSection() {
                 </div>
                 <div className={styles.toolbarLeft}>
                   <p className={styles.resultCount}>
-                    <strong>{filtered.length}</strong> / {tmsData.length} TMs
+                    <strong>{finalFiltered.length}</strong> / {tmsData.length} TMs
                   </p>
                   {activeFilterCount > 0 && (
                     <button
                       className={styles.clearFiltersBtn}
-                      onClick={() => setFilters(INITIAL_FILTERS)}
+                      onClick={() => { setFilters(INITIAL_FILTERS); setOnlyFavorites(false) }}
                     >
                       Clear filters
                     </button>
@@ -175,7 +185,7 @@ export default function TMsSection() {
               </div>
             </div>
 
-            {filtered.length === 0 ? (
+            {finalFiltered.length === 0 ? (
               <div className={styles.empty}>
                 <span className={styles.emptyIcon}>❄️</span>
                 <p>No TMs match the applied filters.</p>

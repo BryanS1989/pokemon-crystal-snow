@@ -17,6 +17,11 @@
   font-size: 0.82rem;
 }
 
+.favBtnDetail {
+  margin-left: auto;
+  font-size: 1.1rem;
+}
+
 .breadcrumbLink {
   color: var(--accent);
   text-decoration: none;

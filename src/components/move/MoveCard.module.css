@@ -19,11 +19,11 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 8px;
 }
 
 .name {
+  flex-grow: 1;
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -38,6 +38,32 @@
   white-space: nowrap;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.favBtn {
+  flex-shrink: 0;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin: 0;
+  transition: max-width 0.15s ease, opacity 0.15s ease;
+}
+
+.card:hover .favBtn {
+  max-width: 1.5rem;
+  opacity: 1;
+}
+
+.favBtn[data-active] {
+  max-width: 1.5rem;
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .favBtn {
+    max-width: 1.5rem;
+    opacity: 1;
+  }
 }
 
 .stats {

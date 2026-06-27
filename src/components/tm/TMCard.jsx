@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './TMCard.module.css'
+import FavoriteButton from '../shared/FavoriteButton'
 
 export default function TMCard({ tm, move, type, showStats }) {
   return (
@@ -13,6 +14,7 @@ export default function TMCard({ tm, move, type, showStats }) {
           className={styles.tmSprite}
         />
         <span className={styles.tmLabel}>{tm.tm}</span>
+        <FavoriteButton type="tm" id={tm.id} className={styles.favBtn} />
       </div>
       <div className={styles.body}>
         <h3 className={styles.name}>{tm.move}</h3>

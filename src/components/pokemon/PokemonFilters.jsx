@@ -1,11 +1,11 @@
 import styles from './PokemonFilters.module.css'
 
-export default function PokemonFilters({ filters, onFiltersChange, totalCount, filteredCount }) {
+export default function PokemonFilters({ filters, onFiltersChange, totalCount, filteredCount, onlyFavorites, onOnlyFavoritesChange }) {
   const set = (key, value) => onFiltersChange({ ...filters, [key]: value })
 
-  const clearAll = () => onFiltersChange({ name: '', id: '' })
+  const clearAll = () => { onFiltersChange({ name: '', id: '' }); onOnlyFavoritesChange(false) }
 
-  const hasActiveFilters = filters.name !== '' || filters.id !== ''
+  const hasActiveFilters = filters.name !== '' || filters.id !== '' || onlyFavorites
 
   const handleIdChange = (e) => {
     const val = e.target.value
@@ -24,6 +24,20 @@ export default function PokemonFilters({ filters, onFiltersChange, totalCount, f
       <p className={styles.count}>
         <strong>{filteredCount}</strong> / {totalCount} Pokémon
       </p>
+
+      <section className={styles.section}>
+        <label className={styles.toggle}>
+          <span className={styles.toggleLabel}>Only Favorites</span>
+          <button
+            role="switch"
+            aria-checked={onlyFavorites}
+            className={`${styles.toggleSwitch} ${onlyFavorites ? styles.toggleSwitchOn : ''}`}
+            onClick={() => onOnlyFavoritesChange(!onlyFavorites)}
+          >
+            <span className={styles.toggleThumb} />
+          </button>
+        </label>
+      </section>
 
       <section className={styles.section}>
         <label className={styles.sectionLabel}>Name</label>
