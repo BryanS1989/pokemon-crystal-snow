@@ -299,6 +299,26 @@ a.evolutionCard:hover {
   flex-shrink: 0;
 }
 
+.evolutionLearnedRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.evolutionLearnedLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.evolutionLearnedMove {
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 2px 9px;
+}
+
 .noEvolution {
   font-size: 0.88rem;
   color: var(--text-muted);

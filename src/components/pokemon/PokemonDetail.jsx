@@ -6,6 +6,7 @@ const ITEM_SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/mast
 import movesData from '../../data/moves.json'
 import moveTypes from '../../data/move-types.json'
 import eggMovesData from '../../data/egg-moves.json'
+import evolutionMovesData from '../../data/evolution-moves.json'
 import styles from './PokemonDetail.module.css'
 
 const typeByName = Object.fromEntries(moveTypes.map(t => [t.name.toLowerCase(), t]))
@@ -38,13 +39,15 @@ function getTrigger(evolution) {
   }
 }
 
-function EvolutionCard({ evolution, pokemon: overridePokemon }) {
+function EvolutionCard({ evolution, pokemon: overridePokemon, showEvoMove = true }) {
   const trigger = getTrigger(evolution)
   const target = overridePokemon ?? (evolution.into ? pokemonByName[evolution.into] : null)
   const paddedId = target ? String(target.id).padStart(3, '0') : null
   const itemSpriteUrl = evolution.type === 'ITEM'
     ? `${ITEM_SPRITE_BASE}/${evolution.item.toLowerCase().replace(/_/g, '-')}.png`
     : null
+  const evoMove = showEvoMove && target ? evolutionMovesData[target.name] : null
+  const evoMoveType = evoMove ? typeById[moveByName[evoMove]?.typeId] : null
 
   const cardContent = (
     <>
@@ -61,6 +64,15 @@ function EvolutionCard({ evolution, pokemon: overridePokemon }) {
         <div className={styles.evolutionCardInfo}>
           {paddedId && <span className={styles.evolutionCardId}>#{paddedId}</span>}
           {target && <span className={styles.evolutionCardName}>{target.name}</span>}
+          {evoMove && (
+            <span className={styles.evolutionLearnedRow}>
+              <span className={styles.evolutionLearnedLabel}>Learns:</span>
+              <span
+                className={styles.evolutionLearnedMove}
+                style={evoMoveType ? { backgroundColor: evoMoveType.color, color: evoMoveType.textColor, borderColor: evoMoveType.color } : undefined}
+              >{evoMove}</span>
+            </span>
+          )}
         </div>
         <span className={styles.evolutionTrigger}>
           {itemSpriteUrl && (
@@ -98,6 +110,7 @@ function EvolutionInfo({ evolution }) {
 export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack, prevPokemon, nextPokemon }) {
   const paddedId = String(pokemon.id).padStart(3, '0')
   const eggMoves = eggMovesBySpecies[pokemon.name] || []
+  const evolutionMove = evolutionMovesData[pokemon.name] ?? null
 
   const prevFormEntry = pokemonData.reduce((found, p) => {
     if (found) return found
@@ -199,7 +212,7 @@ export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack, pr
             <div className={`${styles.evolutionGroup} ${styles.evolutionGroupFrom}`}>
               <p className={styles.evolutionGroupLabel}>Evolves from</p>
               {prevFormEntry ? (
-                <EvolutionCard evolution={prevFormEntry.evo} pokemon={prevFormEntry.pokemon} />
+                <EvolutionCard evolution={prevFormEntry.evo} pokemon={prevFormEntry.pokemon} showEvoMove={false} />
               ) : (
                 <div className={styles.noEvolutionCard}>Base form</div>
               )}
@@ -235,6 +248,31 @@ export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack, pr
               })}
             </div>
           </section>
+
+          {evolutionMove && (() => {
+            const moveRecord = moveByName[evolutionMove]
+            const type = moveRecord ? typeById[moveRecord.typeId] : null
+            const RowTag = moveRecord ? Link : 'div'
+            const rowProps = moveRecord ? { to: `/moves/${moveRecord.id}` } : {}
+            return (
+              <section className={styles.section}>
+                <h3 className={styles.sectionTitle}>Evolution Move</h3>
+                <div className={styles.movesTable}>
+                  <div className={styles.eggMovesHeader}>
+                    <span>Move</span>
+                    <span>Type</span>
+                  </div>
+                  <RowTag className={styles.eggMoveRow} {...rowProps}>
+                    <span className={styles.moveName}>{evolutionMove}</span>
+                    {type
+                      ? <span className={styles.typeBadge} style={{ backgroundColor: type.color, color: type.textColor }}>{type.name}</span>
+                      : <span />
+                    }
+                  </RowTag>
+                </div>
+              </section>
+            )
+          })()}
 
           {eggMoves.length > 0 && (
             <section className={styles.section}>
