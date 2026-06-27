@@ -38,9 +38,9 @@ function getTrigger(evolution) {
   }
 }
 
-function EvolutionCard({ evolution }) {
+function EvolutionCard({ evolution, pokemon: overridePokemon }) {
   const trigger = getTrigger(evolution)
-  const target = evolution.into ? pokemonByName[evolution.into] : null
+  const target = overridePokemon ?? (evolution.into ? pokemonByName[evolution.into] : null)
   const paddedId = target ? String(target.id).padStart(3, '0') : null
   const itemSpriteUrl = evolution.type === 'ITEM'
     ? `${ITEM_SPRITE_BASE}/${evolution.item.toLowerCase().replace(/_/g, '-')}.png`
@@ -60,7 +60,7 @@ function EvolutionCard({ evolution }) {
       <div className={styles.evolutionCardBody}>
         <div className={styles.evolutionCardInfo}>
           {paddedId && <span className={styles.evolutionCardId}>#{paddedId}</span>}
-          {evolution.into && <span className={styles.evolutionCardName}>{evolution.into}</span>}
+          {target && <span className={styles.evolutionCardName}>{target.name}</span>}
         </div>
         <span className={styles.evolutionTrigger}>
           {itemSpriteUrl && (
@@ -98,6 +98,12 @@ function EvolutionInfo({ evolution }) {
 export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack, prevPokemon, nextPokemon }) {
   const paddedId = String(pokemon.id).padStart(3, '0')
   const eggMoves = eggMovesBySpecies[pokemon.name] || []
+
+  const prevFormEntry = pokemonData.reduce((found, p) => {
+    if (found) return found
+    const evo = p.evolution?.find(e => e.into === pokemon.name)
+    return evo ? { pokemon: p, evo } : null
+  }, null)
 
   const artwork = apiData?.sprites?.other?.['official-artwork']?.front_default
   const height = apiData ? `${(apiData.height / 10).toFixed(1)} m` : null
@@ -177,8 +183,25 @@ export default function PokemonDetail({ pokemon, apiData, apiLoading, onBack, pr
           </div>
 
           <section className={styles.section}>
-            <h3 className={styles.sectionTitle}>Evolution</h3>
-            <EvolutionInfo evolution={pokemon.evolution} />
+            <h3 className={styles.sectionTitle}>Evolution Info</h3>
+
+            <div className={styles.evolutionGroup}>
+              <p className={styles.evolutionGroupLabel}>Evolves into</p>
+              {pokemon.evolution ? (
+                <div className={styles.evolutionList}>
+                  {pokemon.evolution.map((evo, i) => <EvolutionCard key={i} evolution={evo} />)}
+                </div>
+              ) : (
+                <div className={styles.noEvolutionCard}>Does not evolve</div>
+              )}
+            </div>
+
+            {prevFormEntry && (
+              <div className={`${styles.evolutionGroup} ${styles.evolutionGroupFrom}`}>
+                <p className={styles.evolutionGroupLabel}>Evolves from</p>
+                <EvolutionCard evolution={prevFormEntry.evo} pokemon={prevFormEntry.pokemon} />
+              </div>
+            )}
           </section>
         </div>
 

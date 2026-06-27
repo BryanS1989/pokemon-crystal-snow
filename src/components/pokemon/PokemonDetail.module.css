@@ -187,6 +187,30 @@
 
 /* Evolution */
 
+.evolutionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.evolutionGroupFrom {
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.evolutionGroupFrom:hover {
+  opacity: 1;
+}
+
+.evolutionGroupLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
 .evolutionList {
   display: flex;
   flex-direction: column;
@@ -279,6 +303,17 @@ a.evolutionCard:hover {
   font-size: 0.88rem;
   color: var(--text-muted);
   margin: 0;
+  font-style: italic;
+}
+
+.noEvolutionCard {
+  background: var(--card-bg);
+  border: 1px dashed var(--card-border);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
   font-style: italic;
 }
 
